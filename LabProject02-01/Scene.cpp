@@ -33,10 +33,16 @@ void CScene::BuildObjects()
 	float fRailWidth = 6.0f, fRailHeight = 1.0f, fRailDepth = 6.0f;
 	CRailMesh* pRailMesh = new CRailMesh(fRailWidth, fRailHeight, fRailDepth);
 
-	m_pRailObject = new CRailObject();
-	m_pRailObject->SetPosition(0.0f, 0.0f, 0.0f);
-	m_pRailObject->SetMesh(pRailMesh);
-	m_pRailObject->SetColor(RGB(0, 255, 0));
+	m_nRails = 20;
+	m_ppRailObject = new CRailObject * [m_nRails];
+
+	for (int i = 0; i < m_nRails; ++i) {
+		m_ppRailObject[i] = new CRailObject();
+		m_ppRailObject[i]->SetPosition(0.0f, -1.0f, 6.0f * i);
+		m_ppRailObject[i]->SetMesh(pRailMesh);
+		m_ppRailObject[i]->SetColor(RGB(0, 255, 0));
+	}
+
 	// 왜 있는지 잘 모르겠다
 	//m_pRailObject->m_pxmf4WallPlanes[0] = XMFLOAT4(+1.0f, 0.0f, 0.0f, fRailWidth * 0.5f);
 	//m_pRailObject->m_pxmf4WallPlanes[1] = XMFLOAT4(-1.0f, 0.0f, 0.0f, fRailWidth * 0.5f);
@@ -48,108 +54,107 @@ void CScene::BuildObjects()
 
 	CCubeMesh* pCubeMesh = new CCubeMesh(4.0f, 4.0f, 4.0f);
 	
-	m_nObjects = 1;
+	m_nObjects = 10;
 	m_ppObjects = new CGameObject * [m_nObjects];
-
-	m_ppObjects[0] = new CExplosiveObject();
-	m_ppObjects[0]->SetMesh(pCubeMesh);
-	m_ppObjects[0]->SetColor(RGB(255, 0, 0));
-	m_ppObjects[0]->SetPosition(-13.5f, 0.0f, -14.0f);
-	m_ppObjects[0]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 1.0f));
-	m_ppObjects[0]->SetRotationSpeed(0.0f);
-	m_ppObjects[0]->SetMovingDirection(XMFLOAT3(1.0f, 0.0f, 0.0f));
-	m_ppObjects[0]->SetMovingSpeed(0.0f);
 
 	//m_ppObjects[0] = new CExplosiveObject();
 	//m_ppObjects[0]->SetMesh(pCubeMesh);
 	//m_ppObjects[0]->SetColor(RGB(255, 0, 0));
 	//m_ppObjects[0]->SetPosition(-13.5f, 0.0f, -14.0f);
 	//m_ppObjects[0]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 1.0f));
-	//m_ppObjects[0]->SetRotationSpeed(90.0f);
+	//m_ppObjects[0]->SetRotationSpeed(0.0f);
 	//m_ppObjects[0]->SetMovingDirection(XMFLOAT3(1.0f, 0.0f, 0.0f));
-	//m_ppObjects[0]->SetMovingSpeed(10.5f);
+	//m_ppObjects[0]->SetMovingSpeed(0.0f);
 
+	m_ppObjects[0] = new CExplosiveObject();
+	m_ppObjects[0]->SetMesh(pCubeMesh);
+	m_ppObjects[0]->SetColor(RGB(255, 0, 0));
+	m_ppObjects[0]->SetPosition(-13.5f, 0.0f, -14.0f);
+	m_ppObjects[0]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 1.0f));
+	m_ppObjects[0]->SetRotationSpeed(90.0f);
+	m_ppObjects[0]->SetMovingDirection(XMFLOAT3(1.0f, 0.0f, 0.0f));
+	m_ppObjects[0]->SetMovingSpeed(10.5f);
 
-	//m_ppObjects[1] = new CExplosiveObject();
-	//m_ppObjects[1]->SetMesh(pCubeMesh);
-	//m_ppObjects[1]->SetColor(RGB(0, 0, 255));
-	//m_ppObjects[1]->SetPosition(+13.5f, 0.0f, -14.0f);
-	//m_ppObjects[1]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
-	//m_ppObjects[1]->SetRotationSpeed(180.0f);
-	//m_ppObjects[1]->SetMovingDirection(XMFLOAT3(-1.0f, 0.0f, 0.0f));
-	//m_ppObjects[1]->SetMovingSpeed(8.8f);
+	m_ppObjects[1] = new CExplosiveObject();
+	m_ppObjects[1]->SetMesh(pCubeMesh);
+	m_ppObjects[1]->SetColor(RGB(0, 0, 255));
+	m_ppObjects[1]->SetPosition(+13.5f, 0.0f, -14.0f);
+	m_ppObjects[1]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
+	m_ppObjects[1]->SetRotationSpeed(180.0f);
+	m_ppObjects[1]->SetMovingDirection(XMFLOAT3(-1.0f, 0.0f, 0.0f));
+	m_ppObjects[1]->SetMovingSpeed(8.8f);
 
-	//m_ppObjects[2] = new CExplosiveObject();
-	//m_ppObjects[2]->SetMesh(pCubeMesh);
-	//m_ppObjects[2]->SetColor(RGB(0, 255, 0));
-	//m_ppObjects[2]->SetPosition(0.0f, +5.0f, 20.0f);
-	//m_ppObjects[2]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
-	//m_ppObjects[2]->SetRotationSpeed(30.15f);
-	//m_ppObjects[2]->SetMovingDirection(XMFLOAT3(1.0f, -1.0f, 0.0f));
-	//m_ppObjects[2]->SetMovingSpeed(5.2f);
+	m_ppObjects[2] = new CExplosiveObject();
+	m_ppObjects[2]->SetMesh(pCubeMesh);
+	m_ppObjects[2]->SetColor(RGB(0, 255, 0));
+	m_ppObjects[2]->SetPosition(0.0f, +5.0f, 20.0f);
+	m_ppObjects[2]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
+	m_ppObjects[2]->SetRotationSpeed(30.15f);
+	m_ppObjects[2]->SetMovingDirection(XMFLOAT3(1.0f, -1.0f, 0.0f));
+	m_ppObjects[2]->SetMovingSpeed(5.2f);
 
-	//m_ppObjects[3] = new CExplosiveObject();
-	//m_ppObjects[3]->SetMesh(pCubeMesh);
-	//m_ppObjects[3]->SetColor(RGB(0, 255, 255));
-	//m_ppObjects[3]->SetPosition(0.0f, 0.0f, 0.0f);
-	//m_ppObjects[3]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 1.0f));
-	//m_ppObjects[3]->SetRotationSpeed(40.6f);
-	//m_ppObjects[3]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, 1.0f));
-	//m_ppObjects[3]->SetMovingSpeed(20.4f);
+	m_ppObjects[3] = new CExplosiveObject();
+	m_ppObjects[3]->SetMesh(pCubeMesh);
+	m_ppObjects[3]->SetColor(RGB(0, 255, 255));
+	m_ppObjects[3]->SetPosition(0.0f, 0.0f, 0.0f);
+	m_ppObjects[3]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 1.0f));
+	m_ppObjects[3]->SetRotationSpeed(40.6f);
+	m_ppObjects[3]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, 1.0f));
+	m_ppObjects[3]->SetMovingSpeed(20.4f);
 
-	//m_ppObjects[4] = new CExplosiveObject();
-	//m_ppObjects[4]->SetMesh(pCubeMesh);
-	//m_ppObjects[4]->SetColor(RGB(128, 0, 255));
-	//m_ppObjects[4]->SetPosition(10.0f, 0.0f, 0.0f);
-	//m_ppObjects[4]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
-	//m_ppObjects[4]->SetRotationSpeed(50.06f);
-	//m_ppObjects[4]->SetMovingDirection(XMFLOAT3(0.0f, 1.0f, 1.0f));
-	//m_ppObjects[4]->SetMovingSpeed(6.4f);
+	m_ppObjects[4] = new CExplosiveObject();
+	m_ppObjects[4]->SetMesh(pCubeMesh);
+	m_ppObjects[4]->SetColor(RGB(128, 0, 255));
+	m_ppObjects[4]->SetPosition(10.0f, 0.0f, 0.0f);
+	m_ppObjects[4]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
+	m_ppObjects[4]->SetRotationSpeed(50.06f);
+	m_ppObjects[4]->SetMovingDirection(XMFLOAT3(0.0f, 1.0f, 1.0f));
+	m_ppObjects[4]->SetMovingSpeed(6.4f);
 
-	//m_ppObjects[5] = new CExplosiveObject();
-	//m_ppObjects[5]->SetMesh(pCubeMesh);
-	//m_ppObjects[5]->SetColor(RGB(255, 0, 255));
-	//m_ppObjects[5]->SetPosition(-10.0f, 0.0f, -10.0f);
-	//m_ppObjects[5]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
-	//m_ppObjects[5]->SetRotationSpeed(60.06f);
-	//m_ppObjects[5]->SetMovingDirection(XMFLOAT3(1.0f, 0.0f, 1.0f));
-	//m_ppObjects[5]->SetMovingSpeed(8.9f);
+	m_ppObjects[5] = new CExplosiveObject();
+	m_ppObjects[5]->SetMesh(pCubeMesh);
+	m_ppObjects[5]->SetColor(RGB(255, 0, 255));
+	m_ppObjects[5]->SetPosition(-10.0f, 0.0f, -10.0f);
+	m_ppObjects[5]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
+	m_ppObjects[5]->SetRotationSpeed(60.06f);
+	m_ppObjects[5]->SetMovingDirection(XMFLOAT3(1.0f, 0.0f, 1.0f));
+	m_ppObjects[5]->SetMovingSpeed(8.9f);
 
-	//m_ppObjects[6] = new CExplosiveObject();
-	//m_ppObjects[6]->SetMesh(pCubeMesh);
-	//m_ppObjects[6]->SetColor(RGB(255, 0, 255));
-	//m_ppObjects[6]->SetPosition(-10.0f, 10.0f, -10.0f);
-	//m_ppObjects[6]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
-	//m_ppObjects[6]->SetRotationSpeed(60.06f);
-	//m_ppObjects[6]->SetMovingDirection(XMFLOAT3(1.0f, 1.0f, 1.0f));
-	//m_ppObjects[6]->SetMovingSpeed(9.7f);
+	m_ppObjects[6] = new CExplosiveObject();
+	m_ppObjects[6]->SetMesh(pCubeMesh);
+	m_ppObjects[6]->SetColor(RGB(255, 0, 255));
+	m_ppObjects[6]->SetPosition(-10.0f, 10.0f, -10.0f);
+	m_ppObjects[6]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
+	m_ppObjects[6]->SetRotationSpeed(60.06f);
+	m_ppObjects[6]->SetMovingDirection(XMFLOAT3(1.0f, 1.0f, 1.0f));
+	m_ppObjects[6]->SetMovingSpeed(9.7f);
 
-	//m_ppObjects[7] = new CExplosiveObject();
-	//m_ppObjects[7]->SetMesh(pCubeMesh);
-	//m_ppObjects[7]->SetColor(RGB(255, 0, 128));
-	//m_ppObjects[7]->SetPosition(-10.0f, 10.0f, -20.0f);
-	//m_ppObjects[7]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
-	//m_ppObjects[7]->SetRotationSpeed(70.06f);
-	//m_ppObjects[7]->SetMovingDirection(XMFLOAT3(-1.0f, 1.0f, 1.0f));
-	//m_ppObjects[7]->SetMovingSpeed(15.6f);
+	m_ppObjects[7] = new CExplosiveObject();
+	m_ppObjects[7]->SetMesh(pCubeMesh);
+	m_ppObjects[7]->SetColor(RGB(255, 0, 128));
+	m_ppObjects[7]->SetPosition(-10.0f, 10.0f, -20.0f);
+	m_ppObjects[7]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
+	m_ppObjects[7]->SetRotationSpeed(70.06f);
+	m_ppObjects[7]->SetMovingDirection(XMFLOAT3(-1.0f, 1.0f, 1.0f));
+	m_ppObjects[7]->SetMovingSpeed(15.6f);
 
-	//m_ppObjects[8] = new CExplosiveObject();
-	//m_ppObjects[8]->SetMesh(pCubeMesh);
-	//m_ppObjects[8]->SetColor(RGB(128, 0, 255));
-	//m_ppObjects[8]->SetPosition(-15.0f, 10.0f, -30.0f);
-	//m_ppObjects[8]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
-	//m_ppObjects[8]->SetRotationSpeed(90.06f);
-	//m_ppObjects[8]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, -1.0f));
-	//m_ppObjects[8]->SetMovingSpeed(15.0f);
+	m_ppObjects[8] = new CExplosiveObject();
+	m_ppObjects[8]->SetMesh(pCubeMesh);
+	m_ppObjects[8]->SetColor(RGB(128, 0, 255));
+	m_ppObjects[8]->SetPosition(-15.0f, 10.0f, -30.0f);
+	m_ppObjects[8]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
+	m_ppObjects[8]->SetRotationSpeed(90.06f);
+	m_ppObjects[8]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, -1.0f));
+	m_ppObjects[8]->SetMovingSpeed(15.0f);
 
-	//m_ppObjects[9] = new CExplosiveObject();
-	//m_ppObjects[9]->SetMesh(pCubeMesh);
-	//m_ppObjects[9]->SetColor(RGB(255, 64, 64));
-	//m_ppObjects[9]->SetPosition(+15.0f, 10.0f, 0.0f);
-	//m_ppObjects[9]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
-	//m_ppObjects[9]->SetRotationSpeed(90.06f);
-	//m_ppObjects[9]->SetMovingDirection(XMFLOAT3(-0.0f, 0.0f, -1.0f));
-	//m_ppObjects[9]->SetMovingSpeed(15.0f);
+	m_ppObjects[9] = new CExplosiveObject();
+	m_ppObjects[9]->SetMesh(pCubeMesh);
+	m_ppObjects[9]->SetColor(RGB(255, 64, 64));
+	m_ppObjects[9]->SetPosition(+15.0f, 10.0f, 0.0f);
+	m_ppObjects[9]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
+	m_ppObjects[9]->SetRotationSpeed(90.06f);
+	m_ppObjects[9]->SetMovingDirection(XMFLOAT3(-0.0f, 0.0f, -1.0f));
+	m_ppObjects[9]->SetMovingSpeed(15.0f);
 
 #ifdef _WITH_DRAW_AXIS
 	m_pWorldAxis = new CGameObject();
@@ -332,6 +337,18 @@ void CScene::CheckPlayerByWallCollision()
 		m_pWallsObject->SetPosition(m_pPlayer->m_xmf3Position);
 }
 
+void CScene::CheckPlayerByRailCollision()
+{
+	CCamera* pCamera = m_pPlayer->GetCamera();
+	
+	for (int i = 0; i < m_nRails; ++i) {
+		if (pCamera->IsInFrustum(m_ppRailObject[i]->m_xmOOBB) && m_ppRailObject[i]->m_xmOOBB.Intersects(m_pPlayer->m_xmOOBB)) {
+			m_pPlayer->MoveForward();
+		}
+	}
+	
+}
+
 void CScene::CheckObjectByBulletCollisions()
 {
 	CBulletObject** ppBullets = ((CAirplanePlayer*)m_pPlayer)->m_ppBullets;
@@ -355,7 +372,7 @@ void CScene::Animate(float fElapsedTime)
 
 	for (int i = 0; i < m_nObjects; i++) m_ppObjects[i]->Animate(fElapsedTime);
 
-	//m_pRailObject->Animate(fElapsedTime);
+	for (int i = 0; i < m_nRails; i++) m_ppRailObject[i]->Animate(fElapsedTime);
 
 	CheckPlayerByWallCollision();
 
@@ -364,6 +381,8 @@ void CScene::Animate(float fElapsedTime)
 	CheckObjectByObjectCollisions();
 
 	CheckObjectByBulletCollisions();
+
+	CheckPlayerByRailCollision();
 }
 
 void CScene::Render(HDC hDCFrameBuffer, CCamera* pCamera)
@@ -371,9 +390,9 @@ void CScene::Render(HDC hDCFrameBuffer, CCamera* pCamera)
 	CGraphicsPipeline::SetViewport(&pCamera->m_Viewport);
 
 	CGraphicsPipeline::SetViewPerspectiveProjectTransform(&pCamera->m_xmf4x4ViewPerspectiveProject);
-	m_pWallsObject->Render(hDCFrameBuffer, pCamera);
+	//m_pWallsObject->Render(hDCFrameBuffer, pCamera);
 	for (int i = 0; i < m_nObjects; i++) m_ppObjects[i]->Render(hDCFrameBuffer, pCamera);
-	m_pRailObject->Render(hDCFrameBuffer, pCamera);
+	for (int i = 0; i < m_nRails; i++) m_ppRailObject[i]->Render(hDCFrameBuffer, pCamera);
 	if (m_pPlayer) m_pPlayer->Render(hDCFrameBuffer, pCamera);
 
 //UI

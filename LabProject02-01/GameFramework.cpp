@@ -65,10 +65,10 @@ void CGameFramework::BuildObjects()
 {
 	CCamera* pCamera = new CCamera();
 	pCamera->SetViewport(0, 0, FRAMEBUFFER_WIDTH, FRAMEBUFFER_HEIGHT);
-	pCamera->GeneratePerspectiveProjectionMatrix(1.01f, 500.0f, 60.0f);
+	pCamera->GeneratePerspectiveProjectionMatrix(1.01f, 200.0f, 60.0f);
 	pCamera->SetFOVAngle(60.0f);
 
-	pCamera->GenerateOrthographicProjectionMatrix(1.01f, 50.0f, FRAMEBUFFER_WIDTH, FRAMEBUFFER_HEIGHT);
+	//pCamera->GenerateOrthographicProjectionMatrix(1.01f, 10.0f, FRAMEBUFFER_WIDTH, FRAMEBUFFER_HEIGHT);
 
 	CAirplaneMesh* pAirplaneMesh = new CAirplaneMesh(6.0f, 6.0f, 1.0f);
 

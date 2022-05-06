@@ -33,7 +33,7 @@ private:
 	XMFLOAT3					m_xmf3Look = XMFLOAT3(0.0f, 0.0f, 1.0f);
 
 	float						m_fFOVAngle = 90.0f;
-	float						m_fProjectRectDistance = 1.0f;
+	float						m_fProjectRectDistance = 1.f;
 
 	float						m_fAspectRatio = float(FRAMEBUFFER_WIDTH) / float(FRAMEBUFFER_HEIGHT);
 
