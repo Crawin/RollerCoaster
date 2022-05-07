@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Scene.h"
 #include "GraphicsPipeline.h"
+#include <random>
 
 CScene::CScene(CPlayer* pPlayer)
 {
@@ -32,16 +33,113 @@ void CScene::BuildObjects()
 
 	float fRailWidth = 6.0f, fRailHeight = 1.0f, fRailDepth = 6.0f;
 	CRailMesh* pRailMesh = new CRailMesh(fRailWidth, fRailHeight, fRailDepth);
-
-	m_nRails = 20;
+	std::random_device rd;
+	std::default_random_engine dre(rd());
+	std::uniform_int_distribution <> uid(0, 2);
+	m_nRails = 3;
 	m_ppRailObject = new CRailObject * [m_nRails];
-
-	for (int i = 0; i < m_nRails; ++i) {
+	//for (int i = 0; i < m_nRails; ++i) {
+	//	m_ppRailObject[i] = new CRailObject();
+	//	m_ppRailObject[i]->SetPosition(0.0f, -1.0f, 6.0f * i);
+	//	m_ppRailObject[i]->SetMesh(pRailMesh);
+	//	m_ppRailObject[i]->SetColor(RGB(0, 255, 0));
+	//	m_ppRailObject[i]->Rotate(XMFLOAT3(-1, 0, 0), 30.0f);
+	//}
+	m_ppRailObject[0] = new CRailObject();
+	m_ppRailObject[0]->setRailType(0);
+	m_ppRailObject[0]->SetRotationAxis(XMFLOAT3(-1, 0, 0));
+	m_ppRailObject[0]->setRotationAngle(0);
+	m_ppRailObject[0]->SetPosition(0.0f, -1.0f, 0.0f);
+	m_ppRailObject[0]->SetMesh(pRailMesh);
+	m_ppRailObject[0]->SetColor(RGB(0, 255, 0));
+	m_ppRailObject[0]->Rotate();
+	for (int i = 1; i < m_nRails; ++i) {
+		int type = 1;
 		m_ppRailObject[i] = new CRailObject();
-		m_ppRailObject[i]->SetPosition(0.0f, -1.0f, 6.0f * i);
+		m_ppRailObject[i]->setRailType(type);
+		m_ppRailObject[i]->SetRotationAxis(XMFLOAT3(-1, 0, 0));
+		switch (type) {
+		case 0:					// 평지
+			m_ppRailObject[i]->setRotationAngle(0);
+			switch (m_ppRailObject[i-1]->m_iRailType) {
+			case 0:				// 평지 - 평지
+				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y, m_ppRailObject[i - 1]->GetPosition().z + fRailDepth);
+				break;
+			case 1:				// 오르막 - 평지
+			case 2:				// 내리막 - 평지
+				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)), m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5 + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)));
+				break;
+			}
+			break;
+		case 1:					// 오르막
+			m_ppRailObject[i]->setRotationAngle(30);
+			switch (m_ppRailObject[i-1]->m_iRailType) {
+			case 0:				// 평지 - 오르막
+				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)), m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5 + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)));
+				break;
+			case 1:				// 오르막 - 오르막
+				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y + fRailDepth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[i - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle))), m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[i - 1]->m_dRotationAngle + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)))));
+				break;
+			case 2:				// 내리막 - 오르막
+				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y, m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[i - 1]->m_dRotationAngle) + cos(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)))));
+				break;
+			}
+			break;
+		case 2:					// 내리막
+			m_ppRailObject[i]->setRotationAngle(-30);
+			switch (m_ppRailObject[i-1]->m_iRailType) {
+			case 0:				// 평지 - 내리막
+				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)), m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle))));
+				break;
+			case 1:				// 오르막 - 내리막
+				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y, m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[i - 1]->m_dRotationAngle) + cos(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)))));
+				break;
+			case 2:				// 내리막 - 내리막
+				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y + fRailDepth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[i - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle))), m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle))));
+				break;
+			}
+			break;
+		case 3:					// 우회전
+			break;
+		case 4:					// 좌회전
+			break;
+		}
 		m_ppRailObject[i]->SetMesh(pRailMesh);
 		m_ppRailObject[i]->SetColor(RGB(0, 255, 0));
+		m_ppRailObject[i]->Rotate();
 	}
+		//m_ppRailObject[1] = new CRailObject();
+		//m_ppRailObject[1]->setRailType(1);
+		//m_ppRailObject[1]->SetRotationAxis(XMFLOAT3(-1, 0, 0));
+		//m_ppRailObject[1]->setRotationAngle(30);
+		//m_ppRailObject[1]->SetPosition(0.0f, m_ppRailObject[1 - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[1]->m_dRotationAngle)), m_ppRailObject[1 - 1]->GetPosition().z + fRailDepth * 0.5 + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[1]->m_dRotationAngle)));
+		//m_ppRailObject[1]->SetMesh(pRailMesh);
+		//m_ppRailObject[1]->SetColor(RGB(0, 255, 0));
+		//m_ppRailObject[1]->Rotate();
+	
+		//m_ppRailObject[2] = new CRailObject();
+		//m_ppRailObject[2]->setRailType(2);
+		//m_ppRailObject[2]->SetRotationAxis(XMFLOAT3(-1, 0, 0));
+		//m_ppRailObject[2]->setRotationAngle(-30);
+		//m_ppRailObject[2]->SetPosition(0.0f, m_ppRailObject[2 - 1]->GetPosition().y, m_ppRailObject[2-1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[2-1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[2]->m_dRotationAngle))));
+		//m_ppRailObject[2]->SetMesh(pRailMesh);
+		//m_ppRailObject[2]->SetColor(RGB(0, 255, 0));
+		//m_ppRailObject[2]->Rotate();
+
+		//m_ppRailObject[3] = new CRailObject();
+		//m_ppRailObject[3]->setRailType(0);
+		//m_ppRailObject[3]->SetRotationAxis(XMFLOAT3(-1, 0, 0));
+		//m_ppRailObject[3]->setRotationAngle(0);
+		//m_ppRailObject[3]->SetPosition(0.0f, m_ppRailObject[3 - 1]->GetPosition().y + fRailDepth*0.5*sin(DegreeToRadian(m_ppRailObject[3-1]->m_dRotationAngle)), m_ppRailObject[3 - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3 - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[3]->m_dRotationAngle))));
+		//m_ppRailObject[3]->SetMesh(pRailMesh);
+		//m_ppRailObject[3]->SetColor(RGB(0, 255, 0));
+		//m_ppRailObject[3]->Rotate();
+	
+	//m_ppRailObject[3] = new CRailObject();
+	//m_ppRailObject[3]->SetPosition(0.0f, m_ppRailObject[1]->GetPosition().y + fRailDepth * 0.5f * tan(DegreeToRadian(-30)), 6.0f * 3);
+	//m_ppRailObject[3]->SetMesh(pRailMesh);
+	//m_ppRailObject[3]->SetColor(RGB(0, 255, 0));
+	//m_ppRailObject[3]->Rotate(XMFLOAT3(-1, 0, 0), -30.0f);
 
 	// 왜 있는지 잘 모르겠다
 	//m_pRailObject->m_pxmf4WallPlanes[0] = XMFLOAT4(+1.0f, 0.0f, 0.0f, fRailWidth * 0.5f);
@@ -54,107 +152,107 @@ void CScene::BuildObjects()
 
 	CCubeMesh* pCubeMesh = new CCubeMesh(4.0f, 4.0f, 4.0f);
 	
-	m_nObjects = 10;
+	m_nObjects = 1;
 	m_ppObjects = new CGameObject * [m_nObjects];
-
-	//m_ppObjects[0] = new CExplosiveObject();
-	//m_ppObjects[0]->SetMesh(pCubeMesh);
-	//m_ppObjects[0]->SetColor(RGB(255, 0, 0));
-	//m_ppObjects[0]->SetPosition(-13.5f, 0.0f, -14.0f);
-	//m_ppObjects[0]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 1.0f));
-	//m_ppObjects[0]->SetRotationSpeed(0.0f);
-	//m_ppObjects[0]->SetMovingDirection(XMFLOAT3(1.0f, 0.0f, 0.0f));
-	//m_ppObjects[0]->SetMovingSpeed(0.0f);
 
 	m_ppObjects[0] = new CExplosiveObject();
 	m_ppObjects[0]->SetMesh(pCubeMesh);
 	m_ppObjects[0]->SetColor(RGB(255, 0, 0));
 	m_ppObjects[0]->SetPosition(-13.5f, 0.0f, -14.0f);
 	m_ppObjects[0]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 1.0f));
-	m_ppObjects[0]->SetRotationSpeed(90.0f);
+	m_ppObjects[0]->SetRotationSpeed(0.0f);
 	m_ppObjects[0]->SetMovingDirection(XMFLOAT3(1.0f, 0.0f, 0.0f));
-	m_ppObjects[0]->SetMovingSpeed(10.5f);
+	m_ppObjects[0]->SetMovingSpeed(0.0f);
 
-	m_ppObjects[1] = new CExplosiveObject();
-	m_ppObjects[1]->SetMesh(pCubeMesh);
-	m_ppObjects[1]->SetColor(RGB(0, 0, 255));
-	m_ppObjects[1]->SetPosition(+13.5f, 0.0f, -14.0f);
-	m_ppObjects[1]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
-	m_ppObjects[1]->SetRotationSpeed(180.0f);
-	m_ppObjects[1]->SetMovingDirection(XMFLOAT3(-1.0f, 0.0f, 0.0f));
-	m_ppObjects[1]->SetMovingSpeed(8.8f);
+	//m_ppObjects[0] = new CExplosiveObject();
+	//m_ppObjects[0]->SetMesh(pCubeMesh);
+	//m_ppObjects[0]->SetColor(RGB(255, 0, 0));
+	//m_ppObjects[0]->SetPosition(-13.5f, 0.0f, -14.0f);
+	//m_ppObjects[0]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 1.0f));
+	//m_ppObjects[0]->SetRotationSpeed(90.0f);
+	//m_ppObjects[0]->SetMovingDirection(XMFLOAT3(1.0f, 0.0f, 0.0f));
+	//m_ppObjects[0]->SetMovingSpeed(10.5f);
 
-	m_ppObjects[2] = new CExplosiveObject();
-	m_ppObjects[2]->SetMesh(pCubeMesh);
-	m_ppObjects[2]->SetColor(RGB(0, 255, 0));
-	m_ppObjects[2]->SetPosition(0.0f, +5.0f, 20.0f);
-	m_ppObjects[2]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
-	m_ppObjects[2]->SetRotationSpeed(30.15f);
-	m_ppObjects[2]->SetMovingDirection(XMFLOAT3(1.0f, -1.0f, 0.0f));
-	m_ppObjects[2]->SetMovingSpeed(5.2f);
+	//m_ppObjects[1] = new CExplosiveObject();
+	//m_ppObjects[1]->SetMesh(pCubeMesh);
+	//m_ppObjects[1]->SetColor(RGB(0, 0, 255));
+	//m_ppObjects[1]->SetPosition(+13.5f, 0.0f, -14.0f);
+	//m_ppObjects[1]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
+	//m_ppObjects[1]->SetRotationSpeed(180.0f);
+	//m_ppObjects[1]->SetMovingDirection(XMFLOAT3(-1.0f, 0.0f, 0.0f));
+	//m_ppObjects[1]->SetMovingSpeed(8.8f);
 
-	m_ppObjects[3] = new CExplosiveObject();
-	m_ppObjects[3]->SetMesh(pCubeMesh);
-	m_ppObjects[3]->SetColor(RGB(0, 255, 255));
-	m_ppObjects[3]->SetPosition(0.0f, 0.0f, 0.0f);
-	m_ppObjects[3]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 1.0f));
-	m_ppObjects[3]->SetRotationSpeed(40.6f);
-	m_ppObjects[3]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, 1.0f));
-	m_ppObjects[3]->SetMovingSpeed(20.4f);
+	//m_ppObjects[2] = new CExplosiveObject();
+	//m_ppObjects[2]->SetMesh(pCubeMesh);
+	//m_ppObjects[2]->SetColor(RGB(0, 255, 0));
+	//m_ppObjects[2]->SetPosition(0.0f, +5.0f, 20.0f);
+	//m_ppObjects[2]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
+	//m_ppObjects[2]->SetRotationSpeed(30.15f);
+	//m_ppObjects[2]->SetMovingDirection(XMFLOAT3(1.0f, -1.0f, 0.0f));
+	//m_ppObjects[2]->SetMovingSpeed(5.2f);
 
-	m_ppObjects[4] = new CExplosiveObject();
-	m_ppObjects[4]->SetMesh(pCubeMesh);
-	m_ppObjects[4]->SetColor(RGB(128, 0, 255));
-	m_ppObjects[4]->SetPosition(10.0f, 0.0f, 0.0f);
-	m_ppObjects[4]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
-	m_ppObjects[4]->SetRotationSpeed(50.06f);
-	m_ppObjects[4]->SetMovingDirection(XMFLOAT3(0.0f, 1.0f, 1.0f));
-	m_ppObjects[4]->SetMovingSpeed(6.4f);
+	//m_ppObjects[3] = new CExplosiveObject();
+	//m_ppObjects[3]->SetMesh(pCubeMesh);
+	//m_ppObjects[3]->SetColor(RGB(0, 255, 255));
+	//m_ppObjects[3]->SetPosition(0.0f, 0.0f, 0.0f);
+	//m_ppObjects[3]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 1.0f));
+	//m_ppObjects[3]->SetRotationSpeed(40.6f);
+	//m_ppObjects[3]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, 1.0f));
+	//m_ppObjects[3]->SetMovingSpeed(20.4f);
 
-	m_ppObjects[5] = new CExplosiveObject();
-	m_ppObjects[5]->SetMesh(pCubeMesh);
-	m_ppObjects[5]->SetColor(RGB(255, 0, 255));
-	m_ppObjects[5]->SetPosition(-10.0f, 0.0f, -10.0f);
-	m_ppObjects[5]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
-	m_ppObjects[5]->SetRotationSpeed(60.06f);
-	m_ppObjects[5]->SetMovingDirection(XMFLOAT3(1.0f, 0.0f, 1.0f));
-	m_ppObjects[5]->SetMovingSpeed(8.9f);
+	//m_ppObjects[4] = new CExplosiveObject();
+	//m_ppObjects[4]->SetMesh(pCubeMesh);
+	//m_ppObjects[4]->SetColor(RGB(128, 0, 255));
+	//m_ppObjects[4]->SetPosition(10.0f, 0.0f, 0.0f);
+	//m_ppObjects[4]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
+	//m_ppObjects[4]->SetRotationSpeed(50.06f);
+	//m_ppObjects[4]->SetMovingDirection(XMFLOAT3(0.0f, 1.0f, 1.0f));
+	//m_ppObjects[4]->SetMovingSpeed(6.4f);
 
-	m_ppObjects[6] = new CExplosiveObject();
-	m_ppObjects[6]->SetMesh(pCubeMesh);
-	m_ppObjects[6]->SetColor(RGB(255, 0, 255));
-	m_ppObjects[6]->SetPosition(-10.0f, 10.0f, -10.0f);
-	m_ppObjects[6]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
-	m_ppObjects[6]->SetRotationSpeed(60.06f);
-	m_ppObjects[6]->SetMovingDirection(XMFLOAT3(1.0f, 1.0f, 1.0f));
-	m_ppObjects[6]->SetMovingSpeed(9.7f);
+	//m_ppObjects[5] = new CExplosiveObject();
+	//m_ppObjects[5]->SetMesh(pCubeMesh);
+	//m_ppObjects[5]->SetColor(RGB(255, 0, 255));
+	//m_ppObjects[5]->SetPosition(-10.0f, 0.0f, -10.0f);
+	//m_ppObjects[5]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
+	//m_ppObjects[5]->SetRotationSpeed(60.06f);
+	//m_ppObjects[5]->SetMovingDirection(XMFLOAT3(1.0f, 0.0f, 1.0f));
+	//m_ppObjects[5]->SetMovingSpeed(8.9f);
 
-	m_ppObjects[7] = new CExplosiveObject();
-	m_ppObjects[7]->SetMesh(pCubeMesh);
-	m_ppObjects[7]->SetColor(RGB(255, 0, 128));
-	m_ppObjects[7]->SetPosition(-10.0f, 10.0f, -20.0f);
-	m_ppObjects[7]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
-	m_ppObjects[7]->SetRotationSpeed(70.06f);
-	m_ppObjects[7]->SetMovingDirection(XMFLOAT3(-1.0f, 1.0f, 1.0f));
-	m_ppObjects[7]->SetMovingSpeed(15.6f);
+	//m_ppObjects[6] = new CExplosiveObject();
+	//m_ppObjects[6]->SetMesh(pCubeMesh);
+	//m_ppObjects[6]->SetColor(RGB(255, 0, 255));
+	//m_ppObjects[6]->SetPosition(-10.0f, 10.0f, -10.0f);
+	//m_ppObjects[6]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
+	//m_ppObjects[6]->SetRotationSpeed(60.06f);
+	//m_ppObjects[6]->SetMovingDirection(XMFLOAT3(1.0f, 1.0f, 1.0f));
+	//m_ppObjects[6]->SetMovingSpeed(9.7f);
 
-	m_ppObjects[8] = new CExplosiveObject();
-	m_ppObjects[8]->SetMesh(pCubeMesh);
-	m_ppObjects[8]->SetColor(RGB(128, 0, 255));
-	m_ppObjects[8]->SetPosition(-15.0f, 10.0f, -30.0f);
-	m_ppObjects[8]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
-	m_ppObjects[8]->SetRotationSpeed(90.06f);
-	m_ppObjects[8]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, -1.0f));
-	m_ppObjects[8]->SetMovingSpeed(15.0f);
+	//m_ppObjects[7] = new CExplosiveObject();
+	//m_ppObjects[7]->SetMesh(pCubeMesh);
+	//m_ppObjects[7]->SetColor(RGB(255, 0, 128));
+	//m_ppObjects[7]->SetPosition(-10.0f, 10.0f, -20.0f);
+	//m_ppObjects[7]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
+	//m_ppObjects[7]->SetRotationSpeed(70.06f);
+	//m_ppObjects[7]->SetMovingDirection(XMFLOAT3(-1.0f, 1.0f, 1.0f));
+	//m_ppObjects[7]->SetMovingSpeed(15.6f);
 
-	m_ppObjects[9] = new CExplosiveObject();
-	m_ppObjects[9]->SetMesh(pCubeMesh);
-	m_ppObjects[9]->SetColor(RGB(255, 64, 64));
-	m_ppObjects[9]->SetPosition(+15.0f, 10.0f, 0.0f);
-	m_ppObjects[9]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
-	m_ppObjects[9]->SetRotationSpeed(90.06f);
-	m_ppObjects[9]->SetMovingDirection(XMFLOAT3(-0.0f, 0.0f, -1.0f));
-	m_ppObjects[9]->SetMovingSpeed(15.0f);
+	//m_ppObjects[8] = new CExplosiveObject();
+	//m_ppObjects[8]->SetMesh(pCubeMesh);
+	//m_ppObjects[8]->SetColor(RGB(128, 0, 255));
+	//m_ppObjects[8]->SetPosition(-15.0f, 10.0f, -30.0f);
+	//m_ppObjects[8]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
+	//m_ppObjects[8]->SetRotationSpeed(90.06f);
+	//m_ppObjects[8]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, -1.0f));
+	//m_ppObjects[8]->SetMovingSpeed(15.0f);
+
+	//m_ppObjects[9] = new CExplosiveObject();
+	//m_ppObjects[9]->SetMesh(pCubeMesh);
+	//m_ppObjects[9]->SetColor(RGB(255, 64, 64));
+	//m_ppObjects[9]->SetPosition(+15.0f, 10.0f, 0.0f);
+	//m_ppObjects[9]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
+	//m_ppObjects[9]->SetRotationSpeed(90.06f);
+	//m_ppObjects[9]->SetMovingDirection(XMFLOAT3(-0.0f, 0.0f, -1.0f));
+	//m_ppObjects[9]->SetMovingSpeed(15.0f);
 
 #ifdef _WITH_DRAW_AXIS
 	m_pWorldAxis = new CGameObject();
@@ -343,7 +441,7 @@ void CScene::CheckPlayerByRailCollision()
 	
 	for (int i = 0; i < m_nRails; ++i) {
 		if (pCamera->IsInFrustum(m_ppRailObject[i]->m_xmOOBB) && m_ppRailObject[i]->m_xmOOBB.Intersects(m_pPlayer->m_xmOOBB)) {
-			m_pPlayer->MoveForward();
+			m_pPlayer->Move(0, 0.15f * tan(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)) - m_pPlayer->m_gravity, 0.15f);
 		}
 	}
 	
@@ -383,6 +481,8 @@ void CScene::Animate(float fElapsedTime)
 	CheckObjectByBulletCollisions();
 
 	CheckPlayerByRailCollision();
+
+	Gravity();
 }
 
 void CScene::Render(HDC hDCFrameBuffer, CCamera* pCamera)
@@ -401,4 +501,8 @@ void CScene::Render(HDC hDCFrameBuffer, CCamera* pCamera)
 	m_pWorldAxis->SetRotationTransform(&m_pPlayer->m_xmf4x4World);
 	m_pWorldAxis->Render(hDCFrameBuffer, pCamera);
 #endif
+}
+
+void CScene::Gravity() {
+	m_pPlayer->Move(0, m_pPlayer->m_gravity, 0);
 }

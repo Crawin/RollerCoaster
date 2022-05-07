@@ -150,5 +150,10 @@ public:
 	virtual ~CRailObject();
 
 public:
+	double						m_dRotationAngle = 0.0f;
+	int							m_iRailType = 0;
+	void setRotationAngle(float degree);
+	void setRailType(int Type);
+	virtual void Rotate();
 	virtual void Render(HDC hDCFrameBuffer, CCamera* pCamera);
 };

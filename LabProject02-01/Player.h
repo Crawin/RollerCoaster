@@ -26,6 +26,7 @@ public:
 
 	CCamera*					m_pCamera = NULL;
 
+	float						m_gravity = -0.05f;
 public:
 	void SetPosition(float x, float y, float z);
 	void SetRotation(float x, float y, float z);

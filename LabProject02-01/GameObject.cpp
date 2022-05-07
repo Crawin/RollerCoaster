@@ -366,6 +366,18 @@ CRailObject::CRailObject() {
 CRailObject::~CRailObject() {
 }
 
+void CRailObject::setRotationAngle(float degree) {
+	m_dRotationAngle = degree;
+}
+
+void CRailObject::setRailType(int Type) {
+	m_iRailType = Type;
+}
+
+void CRailObject::Rotate() {
+	CGameObject::Rotate(m_xmf3RotationAxis, m_dRotationAngle);
+}
+
 void CRailObject::Render(HDC hDCFrameBuffer, CCamera* pCamera)
 {
 	CGameObject::Render(hDCFrameBuffer, pCamera);

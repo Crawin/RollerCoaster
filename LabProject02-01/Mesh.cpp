@@ -267,9 +267,6 @@ CWallMesh::CWallMesh(float fWidth, float fHeight, float fDepth, int nSubRects) :
 CRailMesh::CRailMesh(float fWidth, float fHeight, float fDepth) : CMesh(6*5) {
 	float fHalfWidth = fWidth * 0.5f, fHalfHeight = fHeight * 0.5f, fHalfDepth = fDepth * 0.5f;
 	int k = 0;
-	int data[][3] = { 1,2,3,
-		4,5,6,
-		7,8,9};
 	CVertex vertex_data[] = {
 		CVertex(-fHalfWidth, fHalfHeight, fHalfDepth),			// 0
 		CVertex(-fHalfWidth * 0.5, fHalfHeight, fHalfDepth),				// 1
