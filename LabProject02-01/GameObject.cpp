@@ -374,6 +374,20 @@ void CRailObject::setRailType(int Type) {
 	m_iRailType = Type;
 }
 
+void CRailObject::setRailSize(XMFLOAT3 Size) {
+	m_xmfRailSize = Size;
+}
+
+BOOL CRailObject::intersect(const XMFLOAT3& Position) {
+	XMFLOAT3 RailCenter = this->GetPosition();
+	if (Position.x >= RailCenter.x - m_xmfRailSize.x * 0.4 && Position.x <= RailCenter.x + m_xmfRailSize.x * 0.4
+		&& Position.y >= RailCenter.y - m_xmfRailSize.y * 0.4 && Position.y <= RailCenter.y + m_xmfRailSize.y * 0.4
+		&& Position.z >= RailCenter.z - m_xmfRailSize.z * 0.4 && Position.z <= RailCenter.z + m_xmfRailSize.z * 0.4) {
+		return TRUE;
+	}
+	return FALSE;
+}
+
 void CRailObject::Rotate() {
 	CGameObject::Rotate(m_xmf3RotationAxis, m_dRotationAngle);
 }

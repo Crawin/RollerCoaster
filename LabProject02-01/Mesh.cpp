@@ -523,7 +523,7 @@ CRailStraightMesh::CRailStraightMesh(float fWidth, float fHeight, float fDepth) 
 	pCenterBotRailFace->SetVertex(3, vertex_data[38]);
 	SetPolygon(k++, pCenterBotRailFace);
 
-	m_xmOOBB = BoundingOrientedBox(XMFLOAT3(0.0f, 0.0f, 0.0f), XMFLOAT3(fHalfWidth*0.5, fHalfHeight, fHalfDepth), XMFLOAT4(0.0f, 0.0f, 0.0f, 1.0f));
+	m_xmOOBB = BoundingOrientedBox(XMFLOAT3(0.0f, 0.0f, 0.0f), XMFLOAT3(fHalfWidth, fHalfHeight, fHalfDepth), XMFLOAT4(0.0f, 0.0f, 0.0f, 1.0f));
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -791,7 +791,7 @@ CRailCornerMesh::CRailCornerMesh(float fWidth, float fHeight, float fDepth) : CM
 	pCenterBotRailFace->SetVertex(3, vertex_data[38]);
 	SetPolygon(k++, pCenterBotRailFace);*/
 
-	m_xmOOBB = BoundingOrientedBox(XMFLOAT3(0.0f, 0.0f, 0.0f), XMFLOAT3(fHalfWidth*0.5, fHalfHeight, fHalfDepth), XMFLOAT4(0.0f, 0.0f, 0.0f, 1.0f));
+	m_xmOOBB = BoundingOrientedBox(XMFLOAT3(0.0f, 0.0f, 0.0f), XMFLOAT3(fHalfWidth, fHalfHeight, fHalfDepth), XMFLOAT4(0.0f, 0.0f, 0.0f, 1.0f));
 
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
