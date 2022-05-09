@@ -378,6 +378,24 @@ void CRailObject::Rotate() {
 	CGameObject::Rotate(m_xmf3RotationAxis, m_dRotationAngle);
 }
 
+void CRailObject::RotateHead(int head) {
+	switch (head) {
+	case 12:
+		CGameObject::Rotate(XMFLOAT3(0, 1, 0), 0);
+		break;
+	case 3:
+		CGameObject::Rotate(XMFLOAT3(0, 1, 0), 90);
+		break;
+	case 6:
+		CGameObject::Rotate(XMFLOAT3(0, 1, 0), 180);
+		break;
+	case 9:
+		CGameObject::Rotate(XMFLOAT3(0, 1, 0), 270);
+		break;
+	}
+
+}
+
 void CRailObject::Render(HDC hDCFrameBuffer, CCamera* pCamera)
 {
 	CGameObject::Render(hDCFrameBuffer, pCamera);

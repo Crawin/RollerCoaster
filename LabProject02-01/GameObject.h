@@ -152,8 +152,10 @@ public:
 public:
 	double						m_dRotationAngle = 0.0f;
 	int							m_iRailType = 0;
+	BOOL						m_bPassCorner = FALSE;
 	void setRotationAngle(float degree);
 	void setRailType(int Type);
 	virtual void Rotate();
+	virtual void RotateHead(int head);
 	virtual void Render(HDC hDCFrameBuffer, CCamera* pCamera);
 };

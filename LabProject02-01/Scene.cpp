@@ -32,67 +32,111 @@ void CScene::BuildObjects()
 	m_pWallsObject->m_xmOOBBPlayerMoveCheck = BoundingOrientedBox(XMFLOAT3(0.0f, 0.0f, 0.0f), XMFLOAT3(fHalfWidth, fHalfHeight, fHalfDepth * 0.05f), XMFLOAT4(0.0f, 0.0f, 0.0f, 1.0f));
 
 	float fRailWidth = 6.0f, fRailHeight = 1.0f, fRailDepth = 6.0f;
-	CRailMesh* pRailMesh = new CRailMesh(fRailWidth, fRailHeight, fRailDepth);
+	CRailStraightMesh* pRailStraightMesh = new CRailStraightMesh(fRailWidth, fRailHeight, fRailDepth);
+	CRailCornerMesh* pRailCornerMesh = new CRailCornerMesh(fRailWidth * 2, fRailHeight, fRailDepth * 2);
 	std::random_device rd;
 	std::default_random_engine dre(rd());
 	std::uniform_int_distribution <> uid(0, 2);
-	m_nRails = 3;
+	m_nRails = 8;
 	m_ppRailObject = new CRailObject * [m_nRails];
-	//for (int i = 0; i < m_nRails; ++i) {
-	//	m_ppRailObject[i] = new CRailObject();
-	//	m_ppRailObject[i]->SetPosition(0.0f, -1.0f, 6.0f * i);
-	//	m_ppRailObject[i]->SetMesh(pRailMesh);
-	//	m_ppRailObject[i]->SetColor(RGB(0, 255, 0));
-	//	m_ppRailObject[i]->Rotate(XMFLOAT3(-1, 0, 0), 30.0f);
-	//}
+
 	m_ppRailObject[0] = new CRailObject();
 	m_ppRailObject[0]->setRailType(0);
+	m_aStraightRails[m_nStraightNum++] = 0;
 	m_ppRailObject[0]->SetRotationAxis(XMFLOAT3(-1, 0, 0));
 	m_ppRailObject[0]->setRotationAngle(0);
 	m_ppRailObject[0]->SetPosition(0.0f, -1.0f, 0.0f);
-	m_ppRailObject[0]->SetMesh(pRailMesh);
+	m_ppRailObject[0]->SetMesh(pRailStraightMesh);
 	m_ppRailObject[0]->SetColor(RGB(0, 255, 0));
 	m_ppRailObject[0]->Rotate();
+
 	for (int i = 1; i < m_nRails; ++i) {
-		int type = 1;
+		int type;
+		switch (i) {
+		case 1:
+			type = 3;
+			break;
+		case 2:
+			type = 0;
+			break;
+		case 3:
+			type = 3;
+			break;
+		case 4:
+			type = 0;
+			break;
+		case 5:
+			type = 3;
+			break;
+		case 6:
+			type = 0;
+			break;
+		case 7:
+			type = 3;
+			break;
+		}
 		m_ppRailObject[i] = new CRailObject();
 		m_ppRailObject[i]->setRailType(type);
 		m_ppRailObject[i]->SetRotationAxis(XMFLOAT3(-1, 0, 0));
 		switch (type) {
 		case 0:					// 평지
+			m_aStraightRails[m_nStraightNum++] = i;
 			m_ppRailObject[i]->setRotationAngle(0);
+			m_ppRailObject[i]->SetMesh(pRailStraightMesh);
+			m_ppRailObject[i]->RotateHead(m_pPlayer->m_iRailHead);
 			switch (m_ppRailObject[i-1]->m_iRailType) {
 			case 0:				// 평지 - 평지
 				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y, m_ppRailObject[i - 1]->GetPosition().z + fRailDepth);
 				break;
 			case 1:				// 오르막 - 평지
 			case 2:				// 내리막 - 평지
-				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)), m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5 + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)));
+				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[i - 1]->m_dRotationAngle)), m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[i - 1]->m_dRotationAngle)) + 1));
+				break;
+			case 3:				// 우회전 - 평지
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:
+					break;
+				case 3:
+					m_ppRailObject[i]->SetPosition(m_ppRailObject[i - 1]->GetPosition().x + fRailWidth * 1.5, m_ppRailObject[i - 1]->GetPosition().y, m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5);
+					break;
+				case 6:
+					m_ppRailObject[i]->SetPosition(m_ppRailObject[i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[i - 1]->GetPosition().y, m_ppRailObject[i - 1]->GetPosition().z - fRailDepth * 1.5);
+					break;
+				case 9:
+					m_ppRailObject[i]->SetPosition(m_ppRailObject[i - 1]->GetPosition().x - fRailWidth * 1.5, m_ppRailObject[i - 1]->GetPosition().y, m_ppRailObject[i - 1]->GetPosition().z - fRailDepth * 0.5);
+					break;
+				}
 				break;
 			}
 			break;
 		case 1:					// 오르막
+			m_aStraightRails[m_nStraightNum++] = i;
 			m_ppRailObject[i]->setRotationAngle(30);
+			m_ppRailObject[i]->SetMesh(pRailStraightMesh);
+			m_ppRailObject[i]->RotateHead(m_pPlayer->m_iRailHead);
 			switch (m_ppRailObject[i-1]->m_iRailType) {
 			case 0:				// 평지 - 오르막
-				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)), m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5 + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)));
+				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)), m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5 *(1 + cos(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle))));
 				break;
 			case 1:				// 오르막 - 오르막
-				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y + fRailDepth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[i - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle))), m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[i - 1]->m_dRotationAngle + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)))));
+				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y + fRailDepth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[i-1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle))), m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle))));
 				break;
 			case 2:				// 내리막 - 오르막
-				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y, m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[i - 1]->m_dRotationAngle) + cos(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)))));
+				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y, m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle))));
 				break;
 			}
 			break;
 		case 2:					// 내리막
+			m_aStraightRails[m_nStraightNum++] = i;
 			m_ppRailObject[i]->setRotationAngle(-30);
+			m_ppRailObject[i]->SetMesh(pRailStraightMesh);
+			m_ppRailObject[i]->RotateHead(m_pPlayer->m_iRailHead);
 			switch (m_ppRailObject[i-1]->m_iRailType) {
 			case 0:				// 평지 - 내리막
 				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)), m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle))));
 				break;
 			case 1:				// 오르막 - 내리막
-				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y, m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[i - 1]->m_dRotationAngle) + cos(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)))));
+				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y, m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle))));
 				break;
 			case 2:				// 내리막 - 내리막
 				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y + fRailDepth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[i - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle))), m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle))));
@@ -100,13 +144,58 @@ void CScene::BuildObjects()
 			}
 			break;
 		case 3:					// 우회전
+			m_aCornerRails[m_nCornerNum++] = i;
+			m_ppRailObject[i]->setRotationAngle(0);
+			m_ppRailObject[i]->SetMesh(pRailCornerMesh);
+			m_ppRailObject[i]->RotateHead(m_pPlayer->m_iRailHead);
+			switch (m_ppRailObject[i - 1]->m_iRailType) {
+			case 0:				// 평지 - 우회전
+				switch (m_pPlayer->m_iRailHead) {
+				case 12: 
+					m_ppRailObject[i]->SetPosition(m_ppRailObject[i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[i - 1]->GetPosition().y, m_ppRailObject[i - 1]->GetPosition().z + fRailDepth + fRailDepth * 0.5);
+					m_pPlayer->m_iRailHead = 3;
+					break;
+				case 3:
+					m_ppRailObject[i]->SetPosition(m_ppRailObject[i - 1]->GetPosition().x + fRailWidth * 1.5, m_ppRailObject[i - 1]->GetPosition().y, m_ppRailObject[i - 1]->GetPosition().z - fRailDepth * 0.5);
+					m_pPlayer->m_iRailHead = 6;
+					break;
+				case 6:
+					m_ppRailObject[i]->SetPosition(m_ppRailObject[i - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[i - 1]->GetPosition().y, m_ppRailObject[i - 1]->GetPosition().z - fRailDepth * 1.5);
+					m_pPlayer->m_iRailHead = 9;
+					break;
+				case 9:
+					m_ppRailObject[i]->SetPosition(m_ppRailObject[i - 1]->GetPosition().x - fRailWidth * 1.5, m_ppRailObject[i - 1]->GetPosition().y, m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5);
+					m_pPlayer->m_iRailHead = 12;
+					break;
+				}
+				break;
+			case 1:				// 오르막 - 우회전
+				switch (m_pPlayer->m_iRailHead) {
+				case 12: m_pPlayer->m_iRailHead = 3; break;
+				case 3: m_pPlayer->m_iRailHead = 6; break;
+				case 6: m_pPlayer->m_iRailHead = 9; break;
+				case 9: m_pPlayer->m_iRailHead = 12; break;
+				}
+			case 2:				// 내리막 - 우회전
+				switch (m_pPlayer->m_iRailHead) {
+				case 12: m_pPlayer->m_iRailHead = 3; break;
+				case 3: m_pPlayer->m_iRailHead = 6; break;
+				case 6: m_pPlayer->m_iRailHead = 9; break;
+				case 9: m_pPlayer->m_iRailHead = 12; break;
+				}
+				m_ppRailObject[i]->SetPosition(0.0f, m_ppRailObject[i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[i - 1]->m_dRotationAngle)), m_ppRailObject[i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[i - 1]->m_dRotationAngle)) + 1));
+				break;
+			}
 			break;
 		case 4:					// 좌회전
+			m_ppRailObject[i]->SetRotationAxis(XMFLOAT3(0, 1, 0));
+			m_ppRailObject[i]->setRotationAngle(90);
+			m_ppRailObject[i]->SetMesh(pRailCornerMesh);
 			break;
 		}
-		m_ppRailObject[i]->SetMesh(pRailMesh);
 		m_ppRailObject[i]->SetColor(RGB(0, 255, 0));
 		m_ppRailObject[i]->Rotate();
+
 	}
 		//m_ppRailObject[1] = new CRailObject();
 		//m_ppRailObject[1]->setRailType(1);
@@ -435,16 +524,150 @@ void CScene::CheckPlayerByWallCollision()
 		m_pWallsObject->SetPosition(m_pPlayer->m_xmf3Position);
 }
 
-void CScene::CheckPlayerByRailCollision()
+void CScene::CheckPlayerByRailCollision()				// 1차로 평지를 보고 2차로 코너를 봐라
 {
 	CCamera* pCamera = m_pPlayer->GetCamera();
-	
-	for (int i = 0; i < m_nRails; ++i) {
-		if (pCamera->IsInFrustum(m_ppRailObject[i]->m_xmOOBB) && m_ppRailObject[i]->m_xmOOBB.Intersects(m_pPlayer->m_xmOOBB)) {
-			m_pPlayer->Move(0, 0.15f * tan(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)) - m_pPlayer->m_gravity, 0.15f);
+	BOOL OnPlane = FALSE;
+	for (int i = 0; i < m_nStraightNum; ++i) {		// 평지
+		if (pCamera->IsInFrustum(m_ppRailObject[m_aStraightRails[i]]->m_xmOOBB) && m_ppRailObject[m_aStraightRails[i]]->m_xmOOBB.Intersects(m_pPlayer->m_xmOOBB)) {
+			OnPlane = TRUE;
+			switch (m_pPlayer->m_iPlayerHead) {
+			case 12:
+				m_pPlayer->Move(0, 0.15f * tan(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)) - m_pPlayer->m_gravity, 0.15f);
+				break;
+			case 3:
+				m_pPlayer->Move(0.15f, 0.15f * tan(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)) - m_pPlayer->m_gravity, 0);
+				break;
+			case 6:
+				m_pPlayer->Move(0, 0.15f * tan(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)) - m_pPlayer->m_gravity, -0.15f);
+				break;
+			case 9:
+				m_pPlayer->Move(-0.15f, 0.15f * tan(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)) - m_pPlayer->m_gravity, 0);
+				break;
+			}
 		}
 	}
-	
+	if (!OnPlane) {	// 코너
+		for (int i = 0; i < m_nCornerNum; ++i) {
+			if (pCamera->IsInFrustum(m_ppRailObject[m_aCornerRails[i]]->m_xmOOBB) && m_ppRailObject[m_aCornerRails[i]]->m_xmOOBB.Intersects(m_pPlayer->m_xmOOBB)) {
+				if (!m_ppRailObject[m_aCornerRails[i]]->m_bPassCorner) {
+					m_ppRailObject[m_aCornerRails[i]]->m_bPassCorner = TRUE;
+					switch (m_pPlayer->m_iPlayerHead) {
+					case 12:m_pPlayer->m_iPlayerHead = 3; break;
+					case 3:m_pPlayer->m_iPlayerHead = 6; break;
+					case 6:m_pPlayer->m_iPlayerHead = 9; break;
+					case 9:m_pPlayer->m_iPlayerHead = 12; break;
+					}
+				}
+				switch (m_pPlayer->m_iPlayerHead) {
+				case 12:
+					m_pPlayer->Move(-0.15f,- m_pPlayer->m_gravity, 0.15f);
+					break;
+				case 3:
+					m_pPlayer->Move(0.15f, -m_pPlayer->m_gravity, 0.15f);
+					break;
+				case 6:
+					m_pPlayer->Move(0.15f, -m_pPlayer->m_gravity, -0.15f);
+					break;
+				case 9:
+					m_pPlayer->Move(-0.15f, -m_pPlayer->m_gravity, -0.15f);
+					break;
+				}
+			}
+		}
+	}
+	//for (int i = 0; i < m_nRails; ++i) {
+	//	if (pCamera->IsInFrustum(m_ppRailObject[i]->m_xmOOBB) && m_ppRailObject[i]->m_xmOOBB.Intersects(m_pPlayer->m_xmOOBB)) {
+	//		// 시야 안에 레일이 있으며 레일과 충돌했으며 레일이 평면레일이면
+	//		if (m_ppRailObject[i]->m_iRailType >= 0 && m_ppRailObject[i]->m_iRailType <= 2) {
+	//			XMFLOAT3 Goal = m_ppRailObject[i]->GetPosition();
+	//			switch (m_pPlayer->m_iPlayerHead) {
+	//			case 12:
+	//				//m_pPlayer->Move(0, 0.15f * tan(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)) - m_pPlayer->m_gravity, 0.15f);
+	//				Goal.z += 3;
+	//				m_pPlayer->MoveTo(Goal);
+	//				//m_pPlayer->Move(0, 0.15f * tan(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)) - m_pPlayer->m_gravity, 0.15f);
+	//				//Direction = { m_ppRailObject[i]->GetPosition().x - m_pPlayer->GetPosition().x,0,m_ppRailObject[i]->GetPosition().z + 3 - m_pPlayer->GetPosition().z };
+	//				//m_pPlayer->Move(Direction, 0.15f);
+	//				break;
+	//			case 3:
+	//				//m_pPlayer->Move(0.15f, 0.15f * tan(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)) - m_pPlayer->m_gravity, 0);
+	//				Goal.x += 3;
+	//				m_pPlayer->MoveTo(Goal);
+	//				//m_pPlayer->Move(0, 0.15f * tan(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)) - m_pPlayer->m_gravity, 0);
+	//				//Direction = { m_ppRailObject[i]->GetPosition().x + 3 - m_pPlayer->GetPosition().x,0,m_ppRailObject[i]->GetPosition().z - m_pPlayer->GetPosition().z };
+	//				//m_pPlayer->Move(Direction, 0.15f);
+	//				break;
+	//			case 6:
+	//				//m_pPlayer->Move(0, 0.15f * tan(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)) - m_pPlayer->m_gravity, -0.15f);
+	//				Goal.z -= 3;
+	//				m_pPlayer->MoveTo(Goal);
+	//				//m_pPlayer->Move(0, 0.15f * tan(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)) - m_pPlayer->m_gravity, 0);
+	//				//Direction = { m_ppRailObject[i]->GetPosition().x - m_pPlayer->GetPosition().x,0,m_ppRailObject[i]->GetPosition().z - 3 - m_pPlayer->GetPosition().z };
+	//				//m_pPlayer->Move(Direction, 0.15f);
+	//				break;
+	//			case 9:
+	//				//m_pPlayer->Move(-0.15f, 0.15f * tan(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)) - m_pPlayer->m_gravity, 0);
+	//				Goal.x -= 3;
+	//				m_pPlayer->MoveTo(Goal);
+	//				//m_pPlayer->Move(0, 0.15f * tan(DegreeToRadian(m_ppRailObject[i]->m_dRotationAngle)) - m_pPlayer->m_gravity, 0);
+	//				//Direction = { m_ppRailObject[i]->GetPosition().x - 3 - m_pPlayer->GetPosition().x,0,m_ppRailObject[i]->GetPosition().z - m_pPlayer->GetPosition().z };
+	//				//m_pPlayer->Move(Direction, 0.15f);
+	//				break;
+	//			}
+	//		}
+	//		else if (m_ppRailObject[i]->m_iRailType == 3) {
+	//			XMFLOAT3 Direction;
+	//			if (!m_ppRailObject[i]->m_bPassCorner) {	// 처음 충돌했을때 바라보는 방향을 수정해주고
+	//				switch (m_pPlayer->m_iPlayerHead) {
+	//				case 12:
+	//					m_pPlayer->m_iPlayerHead = 3;
+	//					break;
+	//				case 3:
+	//					m_pPlayer->m_iPlayerHead = 6;
+	//					break;
+	//				case 6:
+	//					m_pPlayer->m_iPlayerHead = 9;
+	//					break;
+	//				case 9:
+	//					m_pPlayer->m_iPlayerHead = 12;
+	//					break;
+	//				}
+	//				m_ppRailObject[i]->m_bPassCorner = TRUE;
+	//			}
+	//			switch (m_pPlayer->m_iPlayerHead) {
+	//			case 12:
+	//				m_pPlayer->Move(-0.15f, -m_pPlayer->m_gravity, 0.15f);
+	//				//m_pPlayer->Move(0, -m_pPlayer->m_gravity, 0);
+	//				//Direction = { m_ppRailObject[i]->GetPosition().x + 4.5f - m_pPlayer->GetPosition().x,0,m_ppRailObject[i]->GetPosition().z + 4.5f - m_pPlayer->GetPosition().z };
+	//				//m_pPlayer->Move(Direction, 0.15f);
+	//				break;
+	//			case 3:
+	//				m_pPlayer->Move(0.15f, -m_pPlayer->m_gravity, 0.15f);
+	//				//m_pPlayer->Move(0, -m_pPlayer->m_gravity, 0);
+	//				//Direction = { m_ppRailObject[i]->GetPosition().x +4.5f - m_pPlayer->GetPosition().x,0,m_ppRailObject[i]->GetPosition().z-4.5f - m_pPlayer->GetPosition().z };
+	//				//m_pPlayer->Move(Direction, 0.15f);
+	//				break;
+	//			case 6:
+	//				//m_pPlayer->Move(0, -m_pPlayer->m_gravity, 0);
+	//				//Direction = { m_ppRailObject[i]->GetPosition().x - 4.5f - m_pPlayer->GetPosition().x,0,m_ppRailObject[i]->GetPosition().z-4.5f - m_pPlayer->GetPosition().z };
+	//				//m_pPlayer->Move(Direction, 0.15f);
+	//				m_pPlayer->Move(0.15f, -m_pPlayer->m_gravity, -0.15f);
+	//				break;
+	//			case 9:
+	//				//m_pPlayer->Move(0, -m_pPlayer->m_gravity, 0);
+	//				//Direction = { m_ppRailObject[i]->GetPosition().x - 4.5f - m_pPlayer->GetPosition().x,0,m_ppRailObject[i]->GetPosition().z+4.5f - m_pPlayer->GetPosition().z };
+	//				//m_pPlayer->Move(Direction, 0.15f);
+	//				m_pPlayer->Move(-0.15f, -m_pPlayer->m_gravity, -0.15f);
+	//				break;
+	//			}
+	//		}
+	//		
+	//	}
+	//	else {
+
+	//	}
+	//}
 }
 
 void CScene::CheckObjectByBulletCollisions()

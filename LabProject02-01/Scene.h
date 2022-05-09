@@ -13,6 +13,12 @@ public:
 private:
 	int							m_nObjects = 0;
 	int							m_nRails = 0;
+
+	int							m_aStraightRails[20];
+	int							m_nStraightNum = 0;
+
+	int							m_aCornerRails[20];
+	int							m_nCornerNum = 0;
 	CGameObject					**m_ppObjects = NULL;
 
 	CWallsObject*				m_pWallsObject = NULL;

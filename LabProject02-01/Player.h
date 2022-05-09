@@ -27,6 +27,10 @@ public:
 	CCamera*					m_pCamera = NULL;
 
 	float						m_gravity = -0.05f;
+
+	int							m_iRailHead = 12;
+	int							m_iPlayerHead = 12;
+	
 public:
 	void SetPosition(float x, float y, float z);
 	void SetRotation(float x, float y, float z);
@@ -34,8 +38,10 @@ public:
 	void LookAt(XMFLOAT3& xmf3LookAt, XMFLOAT3& xmf3Up);
 
 	void Move(DWORD dwDirection, float fDistance);
+	//void Move(XMFLOAT3 DirectionVector, float fDistance);
 	void Move(XMFLOAT3& xmf3Shift, bool bUpdateVelocity);
 	void Move(float x, float y, float z);
+	void MoveTo(XMFLOAT3 Goal);
 
 	void Rotate(float fPitch = 0.0f, float fYaw = 0.0f, float fRoll = 0.0f);
 

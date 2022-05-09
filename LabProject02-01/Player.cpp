@@ -60,6 +60,12 @@ void CPlayer::Move(float x, float y, float z)
 	Move(XMFLOAT3(x, y, z), false);
 }
 
+void CPlayer::MoveTo(XMFLOAT3 Goal) {
+	XMFLOAT3 xmf3Shift = XMFLOAT3(0, 0, 0);
+	xmf3Shift = Vector3::Add(xmf3Shift, Vector3::Normalize(XMFLOAT3(Goal.x - m_xmf4x4World._41, Goal.y - m_xmf4x4World._42, Goal.z - m_xmf4x4World._43)), 0.15);
+	Move(xmf3Shift, true);
+}
+
 void CPlayer::Rotate(float fPitch, float fYaw, float fRoll)
 {
 	m_pCamera->Rotate(fPitch, fYaw, fRoll);

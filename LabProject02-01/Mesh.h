@@ -47,7 +47,6 @@ protected:
 
 public:
 	BoundingOrientedBox			m_xmOOBB = BoundingOrientedBox();
-
 public:
 	void SetPolygon(int nIndex, CPolygon *pPolygon);
 
@@ -87,9 +86,16 @@ public:
 	virtual void Render(HDC hDCFrameBuffer);
 };
 
-class CRailMesh : public CMesh
+class CRailStraightMesh : public CMesh
 {
 public:
-	CRailMesh(float fWidth = 1.0f, float fHeight = 1.0f, float fDepth = 1.0f);
-	virtual ~CRailMesh() { }
+	CRailStraightMesh(float fWidth = 1.0f, float fHeight = 1.0f, float fDepth = 1.0f);
+	virtual ~CRailStraightMesh() { }
+};
+
+class CRailCornerMesh : public CMesh
+{
+public:
+	CRailCornerMesh(float fWidth = 1.0f, float fHeight = 1.0f, float fDepth = 1.0f);
+	virtual ~CRailCornerMesh() { }
 };
