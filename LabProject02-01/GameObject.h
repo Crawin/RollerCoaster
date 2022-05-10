@@ -155,12 +155,19 @@ public:
 	XMFLOAT3					m_xmfRailSize = { 0,0,0 };
 
 	BOOL						m_bPassCorner = FALSE;
+	BOOL						m_bPassRail = FALSE;
+	XMFLOAT3					m_xmfGoalPosition = { 0,0,0 };
 	void setRotationAngle(float degree);
 	void setRailType(int Type);
 	void setRailSize(XMFLOAT3 size);
 
 	BOOL intersect(const XMFLOAT3& Position);
 
+	XMFLOAT3 getGoalPosition();
+	void setGoalPosition(const float& x,const float& y, const float& z);
+	void changeGoalPosition(const float& x, const float& y, const float& z);
+
+	virtual void SetPosition(float x, float y, float z);
 	virtual void Rotate();
 	virtual void RotateHead(int head);
 	virtual void Render(HDC hDCFrameBuffer, CCamera* pCamera);

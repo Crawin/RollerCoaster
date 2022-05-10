@@ -388,6 +388,26 @@ BOOL CRailObject::intersect(const XMFLOAT3& Position) {
 	return FALSE;
 }
 
+XMFLOAT3 CRailObject::getGoalPosition() {
+	return m_xmfGoalPosition;
+}
+
+void CRailObject::setGoalPosition(const float& x, const float& y, const float& z) {
+	m_xmfGoalPosition.x = x;
+	m_xmfGoalPosition.y = y;
+	m_xmfGoalPosition.z = z;
+}
+
+void CRailObject::changeGoalPosition(const float& x, const float& y, const float& z) {
+	m_xmfGoalPosition.x += x;
+	m_xmfGoalPosition.y += y;
+	m_xmfGoalPosition.z += z;
+}
+
+void CRailObject::SetPosition(float x, float y, float z) {
+	CGameObject::SetPosition(x, y, z);
+	setGoalPosition(x, y, z);
+}
 void CRailObject::Rotate() {
 	CGameObject::Rotate(m_xmf3RotationAxis, m_dRotationAngle);
 }

@@ -26,6 +26,8 @@ private:
 	CPlayer*					m_pPlayer = NULL;
 
 	CRailObject					**m_ppRailObject = NULL;
+	CRailObject					**m_ppRailObject2 = NULL;
+
 #ifdef _WITH_DRAW_AXIS
 	CGameObject*				m_pWorldAxis = NULL;
 #endif
@@ -40,6 +42,7 @@ public:
 	void CheckObjectByBulletCollisions();
 	void CheckPlayerByRailCollision();
 	void Gravity();
+	void FollowRail();
 
 	virtual void Animate(float fElapsedTime);
 	virtual void Render(HDC hDCFrameBuffer, CCamera* pCamera);

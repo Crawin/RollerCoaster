@@ -30,6 +30,7 @@ public:
 
 	int							m_iRailHead = 12;
 	int							m_iPlayerHead = 12;
+	int							m_iPlayerRailNum = 0;
 	
 public:
 	void SetPosition(float x, float y, float z);
@@ -41,7 +42,7 @@ public:
 	//void Move(XMFLOAT3 DirectionVector, float fDistance);
 	void Move(XMFLOAT3& xmf3Shift, bool bUpdateVelocity);
 	void Move(float x, float y, float z);
-	void MoveTo(XMFLOAT3 Goal);
+	void MoveTo(XMFLOAT3 Goal, float fDistance);
 
 	void Rotate(float fPitch = 0.0f, float fYaw = 0.0f, float fRoll = 0.0f);
 
