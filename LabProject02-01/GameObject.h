@@ -161,6 +161,8 @@ public:
 	void setRailType(int Type);
 	void setRailSize(XMFLOAT3 size);
 
+	void MakeRail(CRailStraightMesh* pRailStraightMesh, const float&, const float&, const float&);
+
 	BOOL intersect(const XMFLOAT3& Position);
 
 	XMFLOAT3 getGoalPosition();
@@ -169,6 +171,6 @@ public:
 
 	virtual void SetPosition(float x, float y, float z);
 	virtual void Rotate();
-	virtual void RotateHead(int head);
+	virtual void RotateHead(int head, BOOL Right);
 	virtual void Render(HDC hDCFrameBuffer, CCamera* pCamera);
 };

@@ -14,19 +14,13 @@ private:
 	int							m_nObjects = 0;
 	int							m_nRails = 0;
 
-	int							m_aStraightRails[20];
-	int							m_nStraightNum = 0;
-
-	int							m_aCornerRails[20];
-	int							m_nCornerNum = 0;
 	CGameObject					**m_ppObjects = NULL;
 
 	CWallsObject*				m_pWallsObject = NULL;
 
 	CPlayer*					m_pPlayer = NULL;
 
-	CRailObject					**m_ppRailObject = NULL;
-	CRailObject					**m_ppRailObject2 = NULL;
+	CRailObject**				m_ppRailObject[4] = { NULL };
 
 #ifdef _WITH_DRAW_AXIS
 	CGameObject*				m_pWorldAxis = NULL;
@@ -40,9 +34,9 @@ public:
 	void CheckObjectByWallCollisions();
 	void CheckPlayerByWallCollision();
 	void CheckObjectByBulletCollisions();
-	void CheckPlayerByRailCollision();
 	void Gravity();
 	void FollowRail();
+	void MakeRail();
 
 	virtual void Animate(float fElapsedTime);
 	virtual void Render(HDC hDCFrameBuffer, CCamera* pCamera);
