@@ -22,6 +22,8 @@ private:
 
 	CRailObject**				m_ppRailObject[4] = { NULL };
 
+	CRailStraightMesh*			pRailStraightMesh = NULL;
+	CRailCornerMesh*			pRailCornerMesh = NULL;
 #ifdef _WITH_DRAW_AXIS
 	CGameObject*				m_pWorldAxis = NULL;
 #endif
@@ -34,7 +36,6 @@ public:
 	void CheckObjectByWallCollisions();
 	void CheckPlayerByWallCollision();
 	void CheckObjectByBulletCollisions();
-	void Gravity();
 	void FollowRail();
 	void MakeRail(const int& railset);
 

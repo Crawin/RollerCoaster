@@ -560,26 +560,6 @@ CRailCornerMesh::CRailCornerMesh(float fWidth, float fHeight, float fDepth) : CM
 		CVertex(fWidth * 25 / 96, -fHalfHeight, -fDepth / 8),	// 21
 		CVertex(fWidth * 23 / 192, -fHalfHeight, -fDepth * 51 / 192),	// 22
 		CVertex(-fWidth / 96, -fHalfHeight, -fDepth * 13 / 96),	// 23
-		
-		//CVertex(fWidth * 34 / 96, fHalfHeight, fDepth*22 / 96),	// 24
-		//CVertex(fWidth*93/192,fHalfHeight,fDepth*93/192-fDepth*37/96),	// 25
-		//CVertex(fWidth * 65 / 192,fHalfHeight,fDepth * 65 / 192 - fDepth * 37 / 96),	// 26
-		//CVertex(-fWidth * 20 / 96, fHalfHeight, fDepth * 8 / 96),	// 27
-
-		//CVertex(fWidth * 34 / 96, -fHalfHeight, fDepth * 22 / 96),	// 28
-		//CVertex(fWidth * 93 / 192,-fHalfHeight,fDepth * 93 / 192 - fDepth * 37 / 96),	// 29
-		//CVertex(fWidth*65/192,-fHalfHeight,fDepth * 65 / 192 - fDepth * 37 / 96),	// 30
-		//CVertex(-fWidth * 20 / 96, -fHalfHeight, fDepth * 8 / 96),	// 31
-
-		//CVertex(-fWidth / 12, fHalfHeight, -fDepth * 5 / 24),	// 32
-		//CVertex(, fHalfHeight,),	// 33
-		//CVertex(, fHalfHeight,),	// 34
-		//CVertex(-fWidth*11 / 48, fHalfHeight, -fDepth * 17 / 48),	// 35
-
-		//CVertex(-fWidth / 12, fHalfHeight, -fDepth * 5 / 24),	// 36
-		//CVertex(, fHalfHeight,),	// 37
-		//CVertex(, fHalfHeight,),	// 38
-		//CVertex(-fWidth * 11 / 48, fHalfHeight, -fDepth * 17 / 48),	// 39
 	};
 	CPolygon* pLeftRailFace = new CPolygon(4);
 	pLeftRailFace->SetVertex(0, vertex_data[0]);
@@ -664,139 +644,12 @@ CRailCornerMesh::CRailCornerMesh(float fWidth, float fHeight, float fDepth) : CM
 	pRightRailFace->SetVertex(2, vertex_data[12]);
 	pRightRailFace->SetVertex(3, vertex_data[15]);
 	SetPolygon(k++, pRightRailFace);
-	//------------------------------------------------
-	//CPolygon* pCenterTopRailFace = new CPolygon(4);
-	//pCenterTopRailFace->SetVertex(0, vertex_data[24]);
-	//pCenterTopRailFace->SetVertex(1, vertex_data[25]);
-	//pCenterTopRailFace->SetVertex(2, vertex_data[26]);
-	//pCenterTopRailFace->SetVertex(3, vertex_data[27]);
-	//SetPolygon(k++, pCenterTopRailFace);
-
-	//pCenterTopRailFace = new CPolygon(4);
-	//pCenterTopRailFace->SetVertex(0, vertex_data[27]);
-	//pCenterTopRailFace->SetVertex(1, vertex_data[26]);
-	//pCenterTopRailFace->SetVertex(2, vertex_data[30]);
-	//pCenterTopRailFace->SetVertex(3, vertex_data[31]);
-	//SetPolygon(k++, pCenterTopRailFace);
-
-	//pCenterTopRailFace = new CPolygon(4);
-	//pCenterTopRailFace->SetVertex(0, vertex_data[31]);
-	//pCenterTopRailFace->SetVertex(1, vertex_data[28]);
-	//pCenterTopRailFace->SetVertex(2, vertex_data[29]);
-	//pCenterTopRailFace->SetVertex(3, vertex_data[30]);
-	//SetPolygon(k++, pCenterTopRailFace);
-
-	//pCenterTopRailFace = new CPolygon(4);
-	//pCenterTopRailFace->SetVertex(0, vertex_data[25]);
-	//pCenterTopRailFace->SetVertex(1, vertex_data[24]);
-	//pCenterTopRailFace->SetVertex(2, vertex_data[28]);
-	//pCenterTopRailFace->SetVertex(3, vertex_data[29]);
-	//SetPolygon(k++, pCenterTopRailFace);
-
-	//pCenterTopRailFace = new CPolygon(4);
-	//pCenterTopRailFace->SetVertex(0, vertex_data[26]);
-	//pCenterTopRailFace->SetVertex(1, vertex_data[25]);
-	//pCenterTopRailFace->SetVertex(2, vertex_data[29]);
-	//pCenterTopRailFace->SetVertex(3, vertex_data[30]);
-	//SetPolygon(k++, pCenterTopRailFace);
-
-	//pCenterTopRailFace = new CPolygon(4);
-	//pCenterTopRailFace->SetVertex(0, vertex_data[24]);
-	//pCenterTopRailFace->SetVertex(1, vertex_data[27]);
-	//pCenterTopRailFace->SetVertex(2, vertex_data[31]);
-	//pCenterTopRailFace->SetVertex(3, vertex_data[28]);
-	//SetPolygon(k++, pCenterTopRailFace);
-	////------------------------------------------------
-	//CPolygon* pCenterCenRailFace = new CPolygon(4);
-	//pCenterCenRailFace->SetVertex(0, vertex_data[16]);
-	//pCenterCenRailFace->SetVertex(1, vertex_data[17]);
-	//pCenterCenRailFace->SetVertex(2, vertex_data[18]);
-	//pCenterCenRailFace->SetVertex(3, vertex_data[19]);
-	//SetPolygon(k++, pCenterCenRailFace);
-
-	//pCenterCenRailFace = new CPolygon(4);
-	//pCenterCenRailFace->SetVertex(0, vertex_data[19]);
-	//pCenterCenRailFace->SetVertex(1, vertex_data[18]);
-	//pCenterCenRailFace->SetVertex(2, vertex_data[22]);
-	//pCenterCenRailFace->SetVertex(3, vertex_data[23]);
-	//SetPolygon(k++, pCenterCenRailFace);
-
-	//pCenterCenRailFace = new CPolygon(4);
-	//pCenterCenRailFace->SetVertex(0, vertex_data[22]);
-	//pCenterCenRailFace->SetVertex(1, vertex_data[23]);
-	//pCenterCenRailFace->SetVertex(2, vertex_data[20]);
-	//pCenterCenRailFace->SetVertex(3, vertex_data[21]);
-	//SetPolygon(k++, pCenterCenRailFace);
-
-	//pCenterCenRailFace = new CPolygon(4);
-	//pCenterCenRailFace->SetVertex(0, vertex_data[17]);
-	//pCenterCenRailFace->SetVertex(1, vertex_data[16]);
-	//pCenterCenRailFace->SetVertex(2, vertex_data[20]);
-	//pCenterCenRailFace->SetVertex(3, vertex_data[21]);
-	//SetPolygon(k++, pCenterCenRailFace);
-
-	//pCenterCenRailFace = new CPolygon(4);
-	//pCenterCenRailFace->SetVertex(0, vertex_data[18]);
-	//pCenterCenRailFace->SetVertex(1, vertex_data[17]);
-	//pCenterCenRailFace->SetVertex(2, vertex_data[21]);
-	//pCenterCenRailFace->SetVertex(3, vertex_data[22]);
-	//SetPolygon(k++, pCenterCenRailFace);
-
-	//pCenterCenRailFace = new CPolygon(4);
-	//pCenterCenRailFace->SetVertex(0, vertex_data[16]);
-	//pCenterCenRailFace->SetVertex(1, vertex_data[19]);
-	//pCenterCenRailFace->SetVertex(2, vertex_data[23]);
-	//pCenterCenRailFace->SetVertex(3, vertex_data[20]);
-	//SetPolygon(k++, pCenterCenRailFace);
-	//------------------------------------------------
-	/*CPolygon* pCenterBotRailFace = new CPolygon(4);
-	pCenterBotRailFace->SetVertex(0, vertex_data[32]);
-	pCenterBotRailFace->SetVertex(1, vertex_data[33]);
-	pCenterBotRailFace->SetVertex(2, vertex_data[34]);
-	pCenterBotRailFace->SetVertex(3, vertex_data[35]);
-	SetPolygon(k++, pCenterBotRailFace);
-
-	pCenterBotRailFace = new CPolygon(4);
-	pCenterBotRailFace->SetVertex(0, vertex_data[37]);
-	pCenterBotRailFace->SetVertex(1, vertex_data[36]);
-	pCenterBotRailFace->SetVertex(2, vertex_data[39]);
-	pCenterBotRailFace->SetVertex(3, vertex_data[38]);
-	SetPolygon(k++, pCenterBotRailFace);
-
-	pCenterBotRailFace = new CPolygon(4);
-	pCenterBotRailFace->SetVertex(0, vertex_data[35]);
-	pCenterBotRailFace->SetVertex(1, vertex_data[34]);
-	pCenterBotRailFace->SetVertex(2, vertex_data[38]);
-	pCenterBotRailFace->SetVertex(3, vertex_data[39]);
-	SetPolygon(k++, pCenterBotRailFace);
-
-	pCenterBotRailFace = new CPolygon(4);
-	pCenterBotRailFace->SetVertex(0, vertex_data[33]);
-	pCenterBotRailFace->SetVertex(1, vertex_data[32]);
-	pCenterBotRailFace->SetVertex(2, vertex_data[36]);
-	pCenterBotRailFace->SetVertex(3, vertex_data[37]);
-	SetPolygon(k++, pCenterBotRailFace);
-
-	pCenterBotRailFace = new CPolygon(4);
-	pCenterBotRailFace->SetVertex(0, vertex_data[32]);
-	pCenterBotRailFace->SetVertex(1, vertex_data[35]);
-	pCenterBotRailFace->SetVertex(2, vertex_data[39]);
-	pCenterBotRailFace->SetVertex(3, vertex_data[36]);
-	SetPolygon(k++, pCenterBotRailFace);
-
-	pCenterBotRailFace = new CPolygon(4);
-	pCenterBotRailFace->SetVertex(0, vertex_data[34]);
-	pCenterBotRailFace->SetVertex(1, vertex_data[33]);
-	pCenterBotRailFace->SetVertex(2, vertex_data[37]);
-	pCenterBotRailFace->SetVertex(3, vertex_data[38]);
-	SetPolygon(k++, pCenterBotRailFace);*/
 
 	m_xmOOBB = BoundingOrientedBox(XMFLOAT3(0.0f, 0.0f, 0.0f), XMFLOAT3(fHalfWidth, fHalfHeight, fHalfDepth), XMFLOAT4(0.0f, 0.0f, 0.0f, 1.0f));
-
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-CAirplaneMesh::CAirplaneMesh(float fWidth, float fHeight, float fDepth) : CMesh(30) // 충돌 범위 보려면 30
+CAirplaneMesh::CAirplaneMesh(float fWidth, float fHeight, float fDepth) : CMesh(24) // 충돌 범위 보려면 30 안보려면 24
 {
 	float fx = fWidth*0.5f, fy = fHeight*0.5f, fz = fDepth*0.5f;
 
@@ -954,7 +807,7 @@ CAirplaneMesh::CAirplaneMesh(float fWidth, float fHeight, float fDepth) : CMesh(
 	SetPolygon(i++, pFace);
 
 	// ------- boundingOreintedBox 보이기
-	pFace = new CPolygon(3);
+	/*pFace = new CPolygon(3);
 	pFace->SetVertex(0, CVertex(-fx, +fy, -fz));
 	pFace->SetVertex(1, CVertex(+fx, +fy, -fz));
 	pFace->SetVertex(2, CVertex(+fx, -fy, -fz));
@@ -994,7 +847,7 @@ CAirplaneMesh::CAirplaneMesh(float fWidth, float fHeight, float fDepth) : CMesh(
 	pFace->SetVertex(1, CVertex(+fx, +fy, +fz));
 	pFace->SetVertex(2, CVertex(+fx, -fy, +fz));
 	pFace->SetVertex(3, CVertex(+fx, -fy, -fz));
-	SetPolygon(i++, pFace);
+	SetPolygon(i++, pFace);*/
 
 	m_xmOOBB = BoundingOrientedBox(XMFLOAT3(0.0f, 0.0f, 0.0f), XMFLOAT3(fx, fy, fz), XMFLOAT4(0.0f, 0.0f, 0.0f, 1.0f));
 }

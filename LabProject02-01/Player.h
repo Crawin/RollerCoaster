@@ -34,7 +34,7 @@ public:
 	int							m_iPlayerRailSet = 0;
 
 	BOOL						m_bPlayerStart = TRUE;
-	
+	BOOL						m_bDeleteStart = FALSE;
 public:
 	void SetPosition(float x, float y, float z);
 	void SetRotation(float x, float y, float z);
@@ -48,6 +48,7 @@ public:
 	void MoveTo(XMFLOAT3 Goal, float fDistance);
 
 	void Rotate(float fPitch = 0.0f, float fYaw = 0.0f, float fRoll = 0.0f);
+	void RotateFixUp(float fPitch = 0.0f, float fYaw = 0.0f, float fRoll = 0.0f);
 
 	void SetCameraOffset(XMFLOAT3& xmf3CameraOffset);
 

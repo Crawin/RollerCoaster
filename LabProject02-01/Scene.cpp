@@ -35,51 +35,9 @@ void CScene::BuildObjects()
 		MakeRail(i);
 	}
 
-		//m_ppRailObject[1] = new CRailObject();
-		//m_ppRailObject[1]->setRailType(1);
-		//m_ppRailObject[1]->SetRotationAxis(XMFLOAT3(-1, 0, 0));
-		//m_ppRailObject[1]->setRotationAngle(30);
-		//m_ppRailObject[1]->SetPosition(0.0f, m_ppRailObject[1 - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[1]->m_dRotationAngle)), m_ppRailObject[1 - 1]->GetPosition().z + fRailDepth * 0.5 + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[1]->m_dRotationAngle)));
-		//m_ppRailObject[1]->SetMesh(pRailMesh);
-		//m_ppRailObject[1]->SetColor(RGB(0, 255, 0));
-		//m_ppRailObject[1]->Rotate();
-	
-		//m_ppRailObject[2] = new CRailObject();
-		//m_ppRailObject[2]->setRailType(2);
-		//m_ppRailObject[2]->SetRotationAxis(XMFLOAT3(-1, 0, 0));
-		//m_ppRailObject[2]->setRotationAngle(-30);
-		//m_ppRailObject[2]->SetPosition(0.0f, m_ppRailObject[2 - 1]->GetPosition().y, m_ppRailObject[2-1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[2-1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[2]->m_dRotationAngle))));
-		//m_ppRailObject[2]->SetMesh(pRailMesh);
-		//m_ppRailObject[2]->SetColor(RGB(0, 255, 0));
-		//m_ppRailObject[2]->Rotate();
-
-		//m_ppRailObject[3] = new CRailObject();
-		//m_ppRailObject[3]->setRailType(0);
-		//m_ppRailObject[3]->SetRotationAxis(XMFLOAT3(-1, 0, 0));
-		//m_ppRailObject[3]->setRotationAngle(0);
-		//m_ppRailObject[3]->SetPosition(0.0f, m_ppRailObject[3 - 1]->GetPosition().y + fRailDepth*0.5*sin(DegreeToRadian(m_ppRailObject[3-1]->m_dRotationAngle)), m_ppRailObject[3 - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3 - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[3]->m_dRotationAngle))));
-		//m_ppRailObject[3]->SetMesh(pRailMesh);
-		//m_ppRailObject[3]->SetColor(RGB(0, 255, 0));
-		//m_ppRailObject[3]->Rotate();
-	
-	//m_ppRailObject[3] = new CRailObject();
-	//m_ppRailObject[3]->SetPosition(0.0f, m_ppRailObject[1]->GetPosition().y + fRailDepth * 0.5f * tan(DegreeToRadian(-30)), 6.0f * 3);
-	//m_ppRailObject[3]->SetMesh(pRailMesh);
-	//m_ppRailObject[3]->SetColor(RGB(0, 255, 0));
-	//m_ppRailObject[3]->Rotate(XMFLOAT3(-1, 0, 0), -30.0f);
-
-	// 왜 있는지 잘 모르겠다
-	//m_pRailObject->m_pxmf4WallPlanes[0] = XMFLOAT4(+1.0f, 0.0f, 0.0f, fRailWidth * 0.5f);
-	//m_pRailObject->m_pxmf4WallPlanes[1] = XMFLOAT4(-1.0f, 0.0f, 0.0f, fRailWidth * 0.5f);
-	//m_pRailObject->m_pxmf4WallPlanes[2] = XMFLOAT4(0.0f, +1.0f, 0.0f, fRailHeight * 0.5f);
-	//m_pRailObject->m_pxmf4WallPlanes[3] = XMFLOAT4(0.0f, -1.0f, 0.0f, fRailHeight * 0.5f);
-	//m_pRailObject->m_pxmf4WallPlanes[4] = XMFLOAT4(0.0f, 0.0f, +1.0f, fRailDepth * 0.5f);
-	//m_pRailObject->m_pxmf4WallPlanes[5] = XMFLOAT4(0.0f, 0.0f, -1.0f, fRailDepth * 0.5f);
-
-
 	CCubeMesh* pCubeMesh = new CCubeMesh(4.0f, 4.0f, 4.0f);
 	
-	m_nObjects = 1;
+	m_nObjects = 10;
 	m_ppObjects = new CGameObject * [m_nObjects];
 
 	m_ppObjects[0] = new CExplosiveObject();
@@ -87,99 +45,90 @@ void CScene::BuildObjects()
 	m_ppObjects[0]->SetColor(RGB(255, 0, 0));
 	m_ppObjects[0]->SetPosition(-13.5f, 0.0f, -14.0f);
 	m_ppObjects[0]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 1.0f));
-	m_ppObjects[0]->SetRotationSpeed(0.0f);
+	m_ppObjects[0]->SetRotationSpeed(90.0f);
 	m_ppObjects[0]->SetMovingDirection(XMFLOAT3(1.0f, 0.0f, 0.0f));
-	m_ppObjects[0]->SetMovingSpeed(0.0f);
+	m_ppObjects[0]->SetMovingSpeed(10.5f);
 
-	//m_ppObjects[0] = new CExplosiveObject();
-	//m_ppObjects[0]->SetMesh(pCubeMesh);
-	//m_ppObjects[0]->SetColor(RGB(255, 0, 0));
-	//m_ppObjects[0]->SetPosition(-13.5f, 0.0f, -14.0f);
-	//m_ppObjects[0]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 1.0f));
-	//m_ppObjects[0]->SetRotationSpeed(90.0f);
-	//m_ppObjects[0]->SetMovingDirection(XMFLOAT3(1.0f, 0.0f, 0.0f));
-	//m_ppObjects[0]->SetMovingSpeed(10.5f);
+	m_ppObjects[1] = new CExplosiveObject();
+	m_ppObjects[1]->SetMesh(pCubeMesh);
+	m_ppObjects[1]->SetColor(RGB(0, 0, 255));
+	m_ppObjects[1]->SetPosition(+13.5f, 0.0f, -14.0f);
+	m_ppObjects[1]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
+	m_ppObjects[1]->SetRotationSpeed(180.0f);
+	m_ppObjects[1]->SetMovingDirection(XMFLOAT3(-1.0f, 0.0f, 0.0f));
+	m_ppObjects[1]->SetMovingSpeed(8.8f);
 
-	//m_ppObjects[1] = new CExplosiveObject();
-	//m_ppObjects[1]->SetMesh(pCubeMesh);
-	//m_ppObjects[1]->SetColor(RGB(0, 0, 255));
-	//m_ppObjects[1]->SetPosition(+13.5f, 0.0f, -14.0f);
-	//m_ppObjects[1]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
-	//m_ppObjects[1]->SetRotationSpeed(180.0f);
-	//m_ppObjects[1]->SetMovingDirection(XMFLOAT3(-1.0f, 0.0f, 0.0f));
-	//m_ppObjects[1]->SetMovingSpeed(8.8f);
+	m_ppObjects[2] = new CExplosiveObject();
+	m_ppObjects[2]->SetMesh(pCubeMesh);
+	m_ppObjects[2]->SetColor(RGB(0, 255, 0));
+	m_ppObjects[2]->SetPosition(0.0f, +5.0f, 20.0f);
+	m_ppObjects[2]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
+	m_ppObjects[2]->SetRotationSpeed(30.15f);
+	m_ppObjects[2]->SetMovingDirection(XMFLOAT3(1.0f, -1.0f, 0.0f));
+	m_ppObjects[2]->SetMovingSpeed(5.2f);
 
-	//m_ppObjects[2] = new CExplosiveObject();
-	//m_ppObjects[2]->SetMesh(pCubeMesh);
-	//m_ppObjects[2]->SetColor(RGB(0, 255, 0));
-	//m_ppObjects[2]->SetPosition(0.0f, +5.0f, 20.0f);
-	//m_ppObjects[2]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
-	//m_ppObjects[2]->SetRotationSpeed(30.15f);
-	//m_ppObjects[2]->SetMovingDirection(XMFLOAT3(1.0f, -1.0f, 0.0f));
-	//m_ppObjects[2]->SetMovingSpeed(5.2f);
+	m_ppObjects[3] = new CExplosiveObject();
+	m_ppObjects[3]->SetMesh(pCubeMesh);
+	m_ppObjects[3]->SetColor(RGB(0, 255, 255));
+	m_ppObjects[3]->SetPosition(0.0f, 0.0f, 0.0f);
+	m_ppObjects[3]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 1.0f));
+	m_ppObjects[3]->SetRotationSpeed(40.6f);
+	m_ppObjects[3]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, 1.0f));
+	m_ppObjects[3]->SetMovingSpeed(20.4f);
 
-	//m_ppObjects[3] = new CExplosiveObject();
-	//m_ppObjects[3]->SetMesh(pCubeMesh);
-	//m_ppObjects[3]->SetColor(RGB(0, 255, 255));
-	//m_ppObjects[3]->SetPosition(0.0f, 0.0f, 0.0f);
-	//m_ppObjects[3]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 1.0f));
-	//m_ppObjects[3]->SetRotationSpeed(40.6f);
-	//m_ppObjects[3]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, 1.0f));
-	//m_ppObjects[3]->SetMovingSpeed(20.4f);
+	m_ppObjects[4] = new CExplosiveObject();
+	m_ppObjects[4]->SetMesh(pCubeMesh);
+	m_ppObjects[4]->SetColor(RGB(128, 0, 255));
+	m_ppObjects[4]->SetPosition(10.0f, 0.0f, 0.0f);
+	m_ppObjects[4]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
+	m_ppObjects[4]->SetRotationSpeed(50.06f);
+	m_ppObjects[4]->SetMovingDirection(XMFLOAT3(0.0f, 1.0f, 1.0f));
+	m_ppObjects[4]->SetMovingSpeed(6.4f);
 
-	//m_ppObjects[4] = new CExplosiveObject();
-	//m_ppObjects[4]->SetMesh(pCubeMesh);
-	//m_ppObjects[4]->SetColor(RGB(128, 0, 255));
-	//m_ppObjects[4]->SetPosition(10.0f, 0.0f, 0.0f);
-	//m_ppObjects[4]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
-	//m_ppObjects[4]->SetRotationSpeed(50.06f);
-	//m_ppObjects[4]->SetMovingDirection(XMFLOAT3(0.0f, 1.0f, 1.0f));
-	//m_ppObjects[4]->SetMovingSpeed(6.4f);
+	m_ppObjects[5] = new CExplosiveObject();
+	m_ppObjects[5]->SetMesh(pCubeMesh);
+	m_ppObjects[5]->SetColor(RGB(255, 0, 255));
+	m_ppObjects[5]->SetPosition(-10.0f, 0.0f, -10.0f);
+	m_ppObjects[5]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
+	m_ppObjects[5]->SetRotationSpeed(60.06f);
+	m_ppObjects[5]->SetMovingDirection(XMFLOAT3(1.0f, 0.0f, 1.0f));
+	m_ppObjects[5]->SetMovingSpeed(8.9f);
 
-	//m_ppObjects[5] = new CExplosiveObject();
-	//m_ppObjects[5]->SetMesh(pCubeMesh);
-	//m_ppObjects[5]->SetColor(RGB(255, 0, 255));
-	//m_ppObjects[5]->SetPosition(-10.0f, 0.0f, -10.0f);
-	//m_ppObjects[5]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
-	//m_ppObjects[5]->SetRotationSpeed(60.06f);
-	//m_ppObjects[5]->SetMovingDirection(XMFLOAT3(1.0f, 0.0f, 1.0f));
-	//m_ppObjects[5]->SetMovingSpeed(8.9f);
+	m_ppObjects[6] = new CExplosiveObject();
+	m_ppObjects[6]->SetMesh(pCubeMesh);
+	m_ppObjects[6]->SetColor(RGB(255, 0, 255));
+	m_ppObjects[6]->SetPosition(-10.0f, 10.0f, -10.0f);
+	m_ppObjects[6]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
+	m_ppObjects[6]->SetRotationSpeed(60.06f);
+	m_ppObjects[6]->SetMovingDirection(XMFLOAT3(1.0f, 1.0f, 1.0f));
+	m_ppObjects[6]->SetMovingSpeed(9.7f);
 
-	//m_ppObjects[6] = new CExplosiveObject();
-	//m_ppObjects[6]->SetMesh(pCubeMesh);
-	//m_ppObjects[6]->SetColor(RGB(255, 0, 255));
-	//m_ppObjects[6]->SetPosition(-10.0f, 10.0f, -10.0f);
-	//m_ppObjects[6]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
-	//m_ppObjects[6]->SetRotationSpeed(60.06f);
-	//m_ppObjects[6]->SetMovingDirection(XMFLOAT3(1.0f, 1.0f, 1.0f));
-	//m_ppObjects[6]->SetMovingSpeed(9.7f);
+	m_ppObjects[7] = new CExplosiveObject();
+	m_ppObjects[7]->SetMesh(pCubeMesh);
+	m_ppObjects[7]->SetColor(RGB(255, 0, 128));
+	m_ppObjects[7]->SetPosition(-10.0f, 10.0f, -20.0f);
+	m_ppObjects[7]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
+	m_ppObjects[7]->SetRotationSpeed(70.06f);
+	m_ppObjects[7]->SetMovingDirection(XMFLOAT3(-1.0f, 1.0f, 1.0f));
+	m_ppObjects[7]->SetMovingSpeed(15.6f);
 
-	//m_ppObjects[7] = new CExplosiveObject();
-	//m_ppObjects[7]->SetMesh(pCubeMesh);
-	//m_ppObjects[7]->SetColor(RGB(255, 0, 128));
-	//m_ppObjects[7]->SetPosition(-10.0f, 10.0f, -20.0f);
-	//m_ppObjects[7]->SetRotationAxis(XMFLOAT3(0.0f, 1.0f, 0.0f));
-	//m_ppObjects[7]->SetRotationSpeed(70.06f);
-	//m_ppObjects[7]->SetMovingDirection(XMFLOAT3(-1.0f, 1.0f, 1.0f));
-	//m_ppObjects[7]->SetMovingSpeed(15.6f);
+	m_ppObjects[8] = new CExplosiveObject();
+	m_ppObjects[8]->SetMesh(pCubeMesh);
+	m_ppObjects[8]->SetColor(RGB(128, 0, 255));
+	m_ppObjects[8]->SetPosition(-15.0f, 10.0f, -30.0f);
+	m_ppObjects[8]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
+	m_ppObjects[8]->SetRotationSpeed(90.06f);
+	m_ppObjects[8]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, -1.0f));
+	m_ppObjects[8]->SetMovingSpeed(15.0f);
 
-	//m_ppObjects[8] = new CExplosiveObject();
-	//m_ppObjects[8]->SetMesh(pCubeMesh);
-	//m_ppObjects[8]->SetColor(RGB(128, 0, 255));
-	//m_ppObjects[8]->SetPosition(-15.0f, 10.0f, -30.0f);
-	//m_ppObjects[8]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
-	//m_ppObjects[8]->SetRotationSpeed(90.06f);
-	//m_ppObjects[8]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, -1.0f));
-	//m_ppObjects[8]->SetMovingSpeed(15.0f);
-
-	//m_ppObjects[9] = new CExplosiveObject();
-	//m_ppObjects[9]->SetMesh(pCubeMesh);
-	//m_ppObjects[9]->SetColor(RGB(255, 64, 64));
-	//m_ppObjects[9]->SetPosition(+15.0f, 10.0f, 0.0f);
-	//m_ppObjects[9]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
-	//m_ppObjects[9]->SetRotationSpeed(90.06f);
-	//m_ppObjects[9]->SetMovingDirection(XMFLOAT3(-0.0f, 0.0f, -1.0f));
-	//m_ppObjects[9]->SetMovingSpeed(15.0f);
+	m_ppObjects[9] = new CExplosiveObject();
+	m_ppObjects[9]->SetMesh(pCubeMesh);
+	m_ppObjects[9]->SetColor(RGB(255, 64, 64));
+	m_ppObjects[9]->SetPosition(+15.0f, 10.0f, 0.0f);
+	m_ppObjects[9]->SetRotationAxis(XMFLOAT3(1.0f, 1.0f, 0.0f));
+	m_ppObjects[9]->SetRotationSpeed(90.06f);
+	m_ppObjects[9]->SetMovingDirection(XMFLOAT3(-0.0f, 0.0f, -1.0f));
+	m_ppObjects[9]->SetMovingSpeed(15.0f);
 
 #ifdef _WITH_DRAW_AXIS
 	m_pWorldAxis = new CGameObject();
@@ -204,8 +153,8 @@ void CScene::ReleaseObjects()
 
 void CScene::MakeRail(const int& railset) {
 	float fRailWidth = 6.0f, fRailHeight = 1.0f, fRailDepth = 6.0f;
-	CRailStraightMesh* pRailStraightMesh = new CRailStraightMesh(fRailWidth, fRailHeight, fRailDepth);
-	CRailCornerMesh* pRailCornerMesh = new CRailCornerMesh(fRailWidth * 2, fRailHeight, fRailDepth * 2);
+	pRailStraightMesh = new CRailStraightMesh(fRailWidth, fRailHeight, fRailDepth);
+	pRailCornerMesh = new CRailCornerMesh(fRailWidth * 2, fRailHeight, fRailDepth * 2);
 	std::random_device rd;
 	std::default_random_engine dre(rd());
 	std::uniform_int_distribution <> uid(0, 3);
@@ -219,7 +168,7 @@ void CScene::MakeRail(const int& railset) {
 		m_ppRailObject[railset][0]->SetRotationAxis(XMFLOAT3(-1, 0, 0));
 		m_ppRailObject[railset][0]->setRotationAngle(0);
 		m_ppRailObject[railset][0]->SetPosition(0.0f, -1.0f, 0.0f);
-		m_ppRailObject[railset][0]->setGoalPosition(0, 0, fRailDepth * 0.5);
+		m_ppRailObject[railset][0]->setGoalPosition(0, +0.5, fRailDepth * 0.5);
 		m_ppRailObject[railset][0]->SetMesh(pRailStraightMesh);
 		m_ppRailObject[railset][0]->SetColor(RGB(0, 255, 0));
 		m_ppRailObject[railset][0]->Rotate();
@@ -272,10 +221,10 @@ void CScene::MakeRail(const int& railset) {
 					break;
 				}
 				switch (m_pPlayer->m_iRailHead) {
-				case 12:m_ppRailObject[railset][0]->changeGoalPosition(0, 0, fRailDepth * 0.5); break;
-				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5, 0, 0); break;
-				case 6:m_ppRailObject[railset][0]->changeGoalPosition(0, 0, -fRailDepth * 0.5); break;
-				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5, 0, 0); break;
+				case 12:m_ppRailObject[railset][0]->changeGoalPosition(0, 0.5, fRailDepth * 0.5); break;
+				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5, 0.5, 0); break;
+				case 6:m_ppRailObject[railset][0]->changeGoalPosition(0, 0.5, -fRailDepth * 0.5); break;
+				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5, 0.5, 0); break;
 				}
 				break;
 			case 1:					// 오르막
@@ -325,10 +274,10 @@ void CScene::MakeRail(const int& railset) {
 					break;
 				}
 				switch (m_pPlayer->m_iRailHead) {
-				case 12:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
-				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), 0); break;
-				case 6:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), -fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
-				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), 0); break;
+				case 12:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)) + 0.5, fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)) + 0.5, 0); break;
+				case 6:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)) + 0.5, -fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)) + 0.5, 0); break;
 				}
 				break;
 			case 2:					// 내리막
@@ -378,10 +327,10 @@ void CScene::MakeRail(const int& railset) {
 					break;
 				}
 				switch (m_pPlayer->m_iRailHead) {
-				case 12:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
-				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), 0); break;
-				case 6:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), -fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
-				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), 0); break;
+				case 12:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)) + 0.5, fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)) + 0.5, 0); break;
+				case 6:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)) + 0.5, -fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)) + 0.5, 0); break;
 				}
 				break;
 			case 3:					// 우회전
@@ -472,10 +421,10 @@ void CScene::MakeRail(const int& railset) {
 					break;
 				}
 				switch (m_pPlayer->m_iRailHead) {
-				case 12:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5, 0, fRailDepth); break;
-				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth, 0, fRailDepth * 0.5); break;
-				case 6:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5, 0, -fRailDepth); break;
-				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth, 0, -fRailDepth * 0.5); break;
+				case 12:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5, 0.5, fRailDepth); break;
+				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth, 0.5, fRailDepth * 0.5); break;
+				case 6:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5, 0.5, -fRailDepth); break;
+				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth, 0.5, -fRailDepth * 0.5); break;
 				}
 				break;
 			case 4:					// 좌회전
@@ -566,10 +515,10 @@ void CScene::MakeRail(const int& railset) {
 					break;
 				}
 				switch (m_pPlayer->m_iRailHead) {
-				case 12:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5, 0, fRailDepth); break;
-				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth, 0, -fRailDepth * 0.5); break;
-				case 6:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5, 0, -fRailDepth); break;
-				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth, 0, fRailDepth * 0.5); break;
+				case 12:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5, 0.5, fRailDepth); break;
+				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth, 0.5, -fRailDepth * 0.5); break;
+				case 6:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5, 0.5, -fRailDepth); break;
+				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth, 0.5, fRailDepth * 0.5); break;
 				}
 				break;
 			}
@@ -616,10 +565,10 @@ void CScene::MakeRail(const int& railset) {
 					break;
 				}
 				switch (m_pPlayer->m_iRailHead) {
-				case 12:m_ppRailObject[railset][0]->changeGoalPosition(0, 0, fRailDepth * 0.5); break;
-				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5, 0, 0); break;
-				case 6:m_ppRailObject[railset][0]->changeGoalPosition(0, 0, -fRailDepth * 0.5); break;
-				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5, 0, 0); break;
+				case 12:m_ppRailObject[railset][0]->changeGoalPosition(0, +0.5, fRailDepth * 0.5); break;
+				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5, +0.5, 0); break;
+				case 6:m_ppRailObject[railset][0]->changeGoalPosition(0, +0.5, -fRailDepth * 0.5); break;
+				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5, +0.5, 0); break;
 				}
 				break;
 			case 1:					// 오르막
@@ -669,10 +618,10 @@ void CScene::MakeRail(const int& railset) {
 					break;
 				}
 				switch (m_pPlayer->m_iRailHead) {
-				case 12:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
-				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), 0); break;
-				case 6:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), -fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
-				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), 0); break;
+				case 12:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)) + 0.5, fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)) + 0.5, 0); break;
+				case 6:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)) + 0.5, -fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)) + 0.5, 0); break;
 				}
 				break;
 			case 2:					// 내리막
@@ -722,10 +671,10 @@ void CScene::MakeRail(const int& railset) {
 					break;
 				}
 				switch (m_pPlayer->m_iRailHead) {
-				case 12:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
-				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), 0); break;
-				case 6:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), -fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
-				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), 0); break;
+				case 12:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)) + 0.5, fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)) + 0.5, 0); break;
+				case 6:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)) + 0.5, -fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)) + 0.5, 0); break;
 				}
 				break;
 			case 3:					// 우회전
@@ -816,10 +765,10 @@ void CScene::MakeRail(const int& railset) {
 					break;
 				}
 				switch (m_pPlayer->m_iRailHead) {
-				case 12:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5, 0, fRailDepth); break;
-				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth, 0, fRailDepth * 0.5); break;
-				case 6:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5, 0, -fRailDepth); break;
-				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth, 0, -fRailDepth * 0.5); break;
+				case 12:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5, +0.5, fRailDepth); break;
+				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth, +0.5, fRailDepth * 0.5); break;
+				case 6:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5, +0.5, -fRailDepth); break;
+				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth, +0.5, -fRailDepth * 0.5); break;
 				}
 				break;
 			case 4:					// 좌회전
@@ -910,10 +859,10 @@ void CScene::MakeRail(const int& railset) {
 					break;
 				}
 				switch (m_pPlayer->m_iRailHead) {
-				case 12:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5, 0, fRailDepth); break;
-				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth, 0, -fRailDepth * 0.5); break;
-				case 6:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5, 0, -fRailDepth); break;
-				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth, 0, fRailDepth * 0.5); break;
+				case 12:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5, +0.5, fRailDepth); break;
+				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth, +0.5, -fRailDepth * 0.5); break;
+				case 6:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5, +0.5, -fRailDepth); break;
+				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth, +0.5, fRailDepth * 0.5); break;
 				}
 				break;
 			}
@@ -968,10 +917,10 @@ void CScene::MakeRail(const int& railset) {
 				break;
 			}
 			switch (m_pPlayer->m_iRailHead) {
-			case 12:m_ppRailObject[railset][i]->changeGoalPosition(0, 0, fRailDepth * 0.5); break;
-			case 3:m_ppRailObject[railset][i]->changeGoalPosition(fRailDepth * 0.5, 0, 0); break;
-			case 6:m_ppRailObject[railset][i]->changeGoalPosition(0, 0, -fRailDepth * 0.5); break;
-			case 9:m_ppRailObject[railset][i]->changeGoalPosition(-fRailDepth * 0.5, 0, 0); break;
+			case 12:m_ppRailObject[railset][i]->changeGoalPosition(0, +0.5, fRailDepth * 0.5); break;
+			case 3:m_ppRailObject[railset][i]->changeGoalPosition(fRailDepth * 0.5, +0.5, 0); break;
+			case 6:m_ppRailObject[railset][i]->changeGoalPosition(0, +0.5, -fRailDepth * 0.5); break;
+			case 9:m_ppRailObject[railset][i]->changeGoalPosition(-fRailDepth * 0.5, +0.5, 0); break;
 			}
 			break;
 		case 1:					// 오르막
@@ -1021,10 +970,10 @@ void CScene::MakeRail(const int& railset) {
 				break;
 			}
 			switch (m_pPlayer->m_iRailHead) {
-			case 12:m_ppRailObject[railset][i]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))); break;
-			case 3:m_ppRailObject[railset][i]->changeGoalPosition(fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), 0); break;
-			case 6:m_ppRailObject[railset][i]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), -fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))); break;
-			case 9:m_ppRailObject[railset][i]->changeGoalPosition(-fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), 0); break;
+			case 12:m_ppRailObject[railset][i]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)) + 0.5, fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))); break;
+			case 3:m_ppRailObject[railset][i]->changeGoalPosition(fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)) + 0.5, 0); break;
+			case 6:m_ppRailObject[railset][i]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)) + 0.5, -fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))); break;
+			case 9:m_ppRailObject[railset][i]->changeGoalPosition(-fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)) + 0.5, 0); break;
 			}
 			break;
 		case 2:					// 내리막
@@ -1074,10 +1023,10 @@ void CScene::MakeRail(const int& railset) {
 				break;
 			}
 			switch (m_pPlayer->m_iRailHead) {
-			case 12:m_ppRailObject[railset][i]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))); break;
-			case 3:m_ppRailObject[railset][i]->changeGoalPosition(fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), 0); break;
-			case 6:m_ppRailObject[railset][i]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), -fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))); break;
-			case 9:m_ppRailObject[railset][i]->changeGoalPosition(-fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), 0); break;
+			case 12:m_ppRailObject[railset][i]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)) + 0.5, fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))); break;
+			case 3:m_ppRailObject[railset][i]->changeGoalPosition(fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)) + 0.5, 0); break;
+			case 6:m_ppRailObject[railset][i]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)) + 0.5, -fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))); break;
+			case 9:m_ppRailObject[railset][i]->changeGoalPosition(-fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)) + 0.5, 0); break;
 			}
 			break;
 		case 3:					// 우회전
@@ -1168,10 +1117,10 @@ void CScene::MakeRail(const int& railset) {
 				break;
 			}
 			switch (m_pPlayer->m_iRailHead) {
-			case 12:m_ppRailObject[railset][i]->changeGoalPosition(-fRailDepth * 0.5, 0, fRailDepth); break;
-			case 3:m_ppRailObject[railset][i]->changeGoalPosition(fRailDepth, 0, fRailDepth * 0.5); break;
-			case 6:m_ppRailObject[railset][i]->changeGoalPosition(fRailDepth * 0.5, 0, -fRailDepth); break;
-			case 9:m_ppRailObject[railset][i]->changeGoalPosition(-fRailDepth, 0, -fRailDepth * 0.5); break;
+			case 12:m_ppRailObject[railset][i]->changeGoalPosition(-fRailDepth * 0.5, +0.5, fRailDepth); break;
+			case 3:m_ppRailObject[railset][i]->changeGoalPosition(fRailDepth, +0.5, fRailDepth * 0.5); break;
+			case 6:m_ppRailObject[railset][i]->changeGoalPosition(fRailDepth * 0.5, +0.5, -fRailDepth); break;
+			case 9:m_ppRailObject[railset][i]->changeGoalPosition(-fRailDepth, +0.5, -fRailDepth * 0.5); break;
 			}
 			break;
 		case 4:					// 좌회전
@@ -1262,10 +1211,10 @@ void CScene::MakeRail(const int& railset) {
 				break;
 			}
 			switch (m_pPlayer->m_iRailHead) {
-			case 12:m_ppRailObject[railset][i]->changeGoalPosition(fRailDepth * 0.5, 0, fRailDepth); break;
-			case 3:m_ppRailObject[railset][i]->changeGoalPosition(fRailDepth, 0, -fRailDepth * 0.5); break;
-			case 6:m_ppRailObject[railset][i]->changeGoalPosition(-fRailDepth * 0.5, 0, -fRailDepth); break;
-			case 9:m_ppRailObject[railset][i]->changeGoalPosition(-fRailDepth, 0, fRailDepth * 0.5); break;
+			case 12:m_ppRailObject[railset][i]->changeGoalPosition(fRailDepth * 0.5, +0.5, fRailDepth); break;
+			case 3:m_ppRailObject[railset][i]->changeGoalPosition(fRailDepth, +0.5, -fRailDepth * 0.5); break;
+			case 6:m_ppRailObject[railset][i]->changeGoalPosition(-fRailDepth * 0.5, +0.5, -fRailDepth); break;
+			case 9:m_ppRailObject[railset][i]->changeGoalPosition(-fRailDepth, +0.5, fRailDepth * 0.5); break;
 			}
 			break;
 		}
@@ -1453,7 +1402,7 @@ void CScene::CheckObjectByBulletCollisions()
 
 void CScene::Animate(float fElapsedTime)
 {
-	m_pWallsObject->Animate(fElapsedTime);
+	//m_pWallsObject->Animate(fElapsedTime);
 
 	for (int i = 0; i < m_nObjects; i++) m_ppObjects[i]->Animate(fElapsedTime);
 
@@ -1461,18 +1410,15 @@ void CScene::Animate(float fElapsedTime)
 		for (int i = 0; i < m_nRails; i++) m_ppRailObject[j][i]->Animate(fElapsedTime);
 
 	}
-	CheckPlayerByWallCollision();
+	//CheckPlayerByWallCollision();
 
-	CheckObjectByWallCollisions();
+	//CheckObjectByWallCollisions();
 
 	CheckObjectByObjectCollisions();
 
 	CheckObjectByBulletCollisions();
 
-	//CheckPlayerByRailCollision();
 	FollowRail();
-
-	//Gravity();
 }
 
 void CScene::Render(HDC hDCFrameBuffer, CCamera* pCamera)
@@ -1495,24 +1441,28 @@ void CScene::Render(HDC hDCFrameBuffer, CCamera* pCamera)
 #endif
 }
 
-void CScene::Gravity() {
-	m_pPlayer->Move(0, m_pPlayer->m_gravity, 0);
-}
-
 void CScene::FollowRail() {
 	m_pPlayer->MoveTo(m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->getGoalPosition(), 0.15f * tan(DegreeToRadian(m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->m_dRotationAngle)));
-	if (m_pPlayer->GetPosition().x >= m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->getGoalPosition().x - 1.5 &&
-		m_pPlayer->GetPosition().x <= m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->getGoalPosition().x + 1.5 &&
-		m_pPlayer->GetPosition().y >= m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->getGoalPosition().y - 1.5 &&
-		m_pPlayer->GetPosition().y <= m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->getGoalPosition().y + 1.5 &&
-		m_pPlayer->GetPosition().z >= m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->getGoalPosition().z - 1.5 &&
-		m_pPlayer->GetPosition().z <= m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->getGoalPosition().z + 1.5) {
+	if (m_pPlayer->GetPosition().x >= m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->getGoalPosition().x - 1 &&
+		m_pPlayer->GetPosition().x <= m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->getGoalPosition().x + 1 &&
+		m_pPlayer->GetPosition().y >= m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->getGoalPosition().y - 1 &&
+		m_pPlayer->GetPosition().y <= m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->getGoalPosition().y + 1 &&
+		m_pPlayer->GetPosition().z >= m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->getGoalPosition().z - 1 &&
+		m_pPlayer->GetPosition().z <= m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->getGoalPosition().z + 1) {
 		m_pPlayer->m_iPlayerRailNum++;
 		if (m_pPlayer->m_iPlayerRailNum > 9) {
-			delete[] m_ppRailObject[m_pPlayer->m_iPlayerRailSet];
-			MakeRail(m_pPlayer->m_iPlayerRailSet);
+
+			if (m_pPlayer->m_bDeleteStart) {
+				delete[] m_ppRailObject[(m_pPlayer->m_iPlayerRailSet + 2) % 4];
+				MakeRail((m_pPlayer->m_iPlayerRailSet + 2) % 4);
+				delete pRailStraightMesh;
+				delete pRailCornerMesh;
+			}
 			m_pPlayer->m_iPlayerRailNum = 0;
 			m_pPlayer->m_iPlayerRailSet++;
+			if (!(m_pPlayer->m_bDeleteStart) && m_pPlayer->m_iPlayerRailSet == 2) {
+				m_pPlayer->m_bDeleteStart = TRUE;
+			}
 			if (m_pPlayer->m_iPlayerRailSet > 3) {
 				m_pPlayer->m_iPlayerRailSet = 0;
 			}
