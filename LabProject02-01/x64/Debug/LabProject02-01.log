@@ -1,183 +1,543 @@
 ﻿  Scene.cpp
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(49,54): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(111,245): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(111,123): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(112,210): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(112,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(113,244): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(113,122): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(114,210): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(114,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(119,182): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(119,83): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(120,181): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(120,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(121,181): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(121,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(122,181): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(122,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(127,182): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(127,83): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(128,181): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(128,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(129,181): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(129,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(130,181): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(130,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(135,67): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(136,60): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(137,67): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(138,61): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(148,241): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(148,123): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(149,206): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(149,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(150,240): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(150,122): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(151,206): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(151,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(156,306): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(156,123): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(157,265): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(157,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(158,304): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(158,122): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(159,265): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(159,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(164,161): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(165,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(166,162): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(167,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(172,271): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(172,140): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(172,83): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(173,330): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(173,212): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(173,94): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(174,270): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(174,139): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(174,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(175,331): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(175,213): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(175,95): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(180,273): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(180,142): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(180,83): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(181,331): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(181,213): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(181,95): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(182,272): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(182,141): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(182,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(183,331): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(183,213): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(183,95): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(188,147): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(188,70): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(189,143): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(189,66): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(190,147): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(190,69): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(191,144): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(191,67): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(201,241): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(201,123): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(202,206): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(202,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(203,240): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(203,122): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(204,206): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(204,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(210,163): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(211,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(212,162): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(213,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(219,306): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(219,123): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(220,265): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(220,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(221,305): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(221,122): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(222,265): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(222,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(228,273): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(228,142): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(228,83): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(229,332): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(229,214): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(229,95): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(230,272): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(230,141): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(230,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(231,331): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(231,213): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(231,95): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(236,273): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(236,142): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(236,83): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(237,331): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(237,213): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(237,95): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(238,272): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(238,141): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(238,82): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(239,331): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(239,213): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(239,95): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(244,147): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(244,70): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(245,143): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(245,66): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(246,147): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(246,69): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(247,144): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(247,67): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(258,188): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(258,76): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(262,175): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(262,76): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(266,175): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(266,76): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(270,175): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(270,76): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(279,257): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(279,135): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(279,76): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(283,333): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(283,211): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(283,158): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(287,339): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(287,135): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(287,76): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(291,333): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(291,211): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(291,158): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(339,62): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(340,75): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(341,60): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(342,77): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(353,175): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(353,76): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(357,175): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(357,76): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(361,175): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(361,76): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(365,175): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(365,76): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(374,339): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(374,135): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(374,76): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(378,333): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(378,211): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(378,158): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(382,339): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(382,135): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(382,76): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(386,333): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(386,211): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(386,158): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(434,61): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(435,76): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(436,61): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(437,76): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(222,64): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(251,295): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(251,153): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(252,250): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(252,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(253,294): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(253,152): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(254,250): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(254,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(259,222): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(259,103): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(260,221): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(260,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(261,221): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(261,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(262,221): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(262,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(267,222): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(267,103): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(268,221): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(268,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(269,221): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(269,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(270,221): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(270,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(275,77): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(276,70): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(277,77): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(278,71): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(288,290): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(288,153): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(289,245): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(289,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(290,289): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(290,152): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(291,245): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(291,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(296,365): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(296,153): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(297,314): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(297,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(298,364): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(298,152): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(299,314): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(299,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(304,203): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(305,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(306,202): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(307,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(312,322): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(312,172): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(312,103): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(313,389): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(313,252): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(313,115): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(314,321): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(314,171): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(314,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(315,389): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(315,252): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(315,115): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(320,322): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(320,172): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(320,103): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(321,389): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(321,252): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(321,115): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(322,321): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(322,171): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(322,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(323,389): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(323,252): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(323,115): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(328,166): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(328,80): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(329,162): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(329,76): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(330,166): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(330,79): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(331,163): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(331,77): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(341,290): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(341,153): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(342,245): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(342,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(343,289): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(343,152): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(344,245): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(344,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(349,203): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(350,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(351,202): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(352,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(357,365): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(357,153): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(358,314): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(358,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(359,364): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(359,152): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(360,314): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(360,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(365,322): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(365,172): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(365,103): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(366,390): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(366,253): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(366,115): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(367,321): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(367,171): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(367,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(368,389): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(368,252): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(368,115): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(373,322): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(373,172): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(373,103): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(374,389): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(374,252): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(374,115): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(375,321): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(375,171): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(375,102): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(376,389): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(376,252): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(376,115): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(381,166): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(381,80): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(382,162): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(382,76): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(383,166): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(383,79): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(384,163): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(384,77): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(395,228): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(395,96): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(399,215): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(399,96): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(403,215): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(403,96): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(407,215): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(407,96): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(416,307): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(416,165): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(416,96): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(420,393): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(420,251): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(420,188): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(424,399): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(424,165): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(424,96): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(428,393): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(428,251): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(428,188): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(475,72): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(476,85): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(477,70): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(478,87): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(489,215): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(489,96): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(493,215): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(493,96): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(497,215): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(497,96): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(501,215): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(501,96): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(510,399): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(510,165): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(510,96): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(514,393): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(514,251): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(514,188): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(518,399): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(518,165): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(518,96): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(522,393): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(522,251): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(522,188): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(569,71): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(570,86): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(571,71): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(572,86): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(595,335): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(595,173): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(596,280): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(596,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(597,334): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(597,172): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(598,280): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(598,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(603,252): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(603,113): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(604,251): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(604,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(605,251): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(605,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(606,251): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(606,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(611,252): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(611,113): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(612,251): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(612,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(613,251): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(613,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(614,251): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(614,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(619,77): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(620,70): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(621,77): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(622,71): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(632,320): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(632,173): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(633,265): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(633,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(634,319): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(634,172): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(635,265): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(635,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(640,405): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(640,173): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(641,344): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(641,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(642,404): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(642,172): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(643,344): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(643,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(648,233): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(649,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(650,232): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(651,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(656,352): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(656,192): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(656,113): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(657,419): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(657,272): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(657,125): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(658,351): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(658,191): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(658,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(659,419): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(659,272): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(659,125): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(664,352): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(664,192): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(664,113): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(665,419): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(665,272): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(665,125): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(666,351): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(666,191): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(666,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(667,419): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(667,272): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(667,125): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(672,166): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(672,80): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(673,162): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(673,76): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(674,166): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(674,79): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(675,163): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(675,77): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(685,320): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(685,173): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(686,265): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(686,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(687,319): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(687,172): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(688,265): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(688,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(693,233): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(694,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(695,232): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(696,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(701,405): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(701,173): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(702,344): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(702,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(703,404): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(703,172): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(704,344): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(704,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(709,352): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(709,192): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(709,113): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(710,420): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(710,273): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(710,125): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(711,351): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(711,191): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(711,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(712,419): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(712,272): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(712,125): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(717,352): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(717,192): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(717,113): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(718,419): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(718,272): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(718,125): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(719,351): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(719,191): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(719,112): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(720,419): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(720,272): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(720,125): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(725,166): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(725,80): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(726,162): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(726,76): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(727,166): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(727,79): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(728,163): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(728,77): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(739,258): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(739,106): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(743,245): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(743,106): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(747,245): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(747,106): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(751,245): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(751,106): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(760,347): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(760,185): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(760,106): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(764,443): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(764,281): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(764,208): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(768,449): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(768,185): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(768,106): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(772,443): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(772,281): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(772,208): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(819,72): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(820,85): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(821,70): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(822,87): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(833,245): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(833,106): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(837,245): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(837,106): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(841,245): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(841,106): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(845,245): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(845,106): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(854,449): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(854,185): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(854,106): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(858,443): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(858,281): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(858,208): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(862,449): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(862,185): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(862,106): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(866,443): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(866,281): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(866,208): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(913,71): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(914,86): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(915,71): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(916,86): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(947,290): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(947,150): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(948,246): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(948,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(949,289): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(949,149): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(950,246): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(950,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(955,218): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(955,101): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(956,217): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(956,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(957,217): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(957,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(958,217): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(958,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(963,218): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(963,101): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(964,217): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(964,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(965,217): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(965,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(966,217): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(966,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(971,76): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(972,69): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(973,76): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(974,70): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(984,286): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(984,150): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(985,242): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(985,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(986,285): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(986,149): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(987,242): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(987,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(992,360): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(992,150): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(993,310): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(993,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(994,359): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(994,149): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(995,310): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(995,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1000,199): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1001,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1002,198): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1003,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1008,318): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1008,169): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1008,101): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1009,385): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1009,249): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1009,113): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1010,317): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1010,168): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1010,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1011,385): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1011,249): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1011,113): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1016,318): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1016,169): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1016,101): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1017,385): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1017,249): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1017,113): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1018,317): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1018,168): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1018,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1019,385): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1019,249): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1019,113): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1024,165): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1024,79): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1025,161): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1025,75): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1026,165): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1026,78): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1027,162): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1027,76): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1037,286): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1037,150): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1038,242): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1038,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1039,285): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1039,149): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1040,242): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1040,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1045,199): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1046,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1047,198): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1048,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1053,360): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1053,150): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1054,310): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1054,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1055,359): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1055,149): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1056,310): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1056,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1061,318): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1061,169): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1061,101): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1062,386): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1062,250): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1062,113): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1063,317): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1063,168): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1063,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1064,385): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1064,249): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1064,113): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1069,318): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1069,169): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1069,101): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1070,385): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1070,249): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1070,113): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1071,317): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1071,168): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1071,100): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1072,385): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1072,249): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1072,113): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1077,165): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1077,79): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1078,161): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1078,75): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1079,165): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1079,78): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1080,162): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1080,76): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1091,224): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1091,94): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1095,211): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1095,94): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1099,211): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1099,94): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1103,211): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1103,94): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1112,302): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1112,162): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1112,94): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1116,387): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1116,247): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1116,185): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1120,393): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1120,162): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1120,94): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1124,387): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1124,247): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1124,185): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1171,71): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1172,84): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1173,69): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1174,86): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1185,211): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1185,94): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1189,211): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1189,94): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1193,211): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1193,94): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1197,211): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1197,94): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1206,393): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1206,162): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1206,94): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1210,387): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1210,247): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1210,185): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1214,393): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1214,162): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1214,94): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1218,387): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1218,247): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1218,185): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1265,70): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1266,85): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1267,70): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1268,85): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   LabProject02-01.vcxproj -> C:\Users\Crawin\source\repos\LabProject(Software Renderer)\x64\Debug\LabProject02-01.exe

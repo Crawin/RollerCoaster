@@ -161,8 +161,6 @@ public:
 	void setRailType(int Type);
 	void setRailSize(XMFLOAT3 size);
 
-	void MakeRail(CRailStraightMesh* pRailStraightMesh, const float&, const float&, const float&);
-
 	BOOL intersect(const XMFLOAT3& Position);
 
 	XMFLOAT3 getGoalPosition();

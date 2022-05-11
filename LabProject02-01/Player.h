@@ -31,6 +31,7 @@ public:
 	int							m_iRailHead = 12;
 	int							m_iPlayerHead = 12;
 	int							m_iPlayerRailNum = 0;
+	int							m_iPlayerRailSet = 0;
 
 	BOOL						m_bPlayerStart = TRUE;
 	

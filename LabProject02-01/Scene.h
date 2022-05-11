@@ -36,7 +36,7 @@ public:
 	void CheckObjectByBulletCollisions();
 	void Gravity();
 	void FollowRail();
-	void MakeRail();
+	void MakeRail(const int& railset);
 
 	virtual void Animate(float fElapsedTime);
 	virtual void Render(HDC hDCFrameBuffer, CCamera* pCamera);

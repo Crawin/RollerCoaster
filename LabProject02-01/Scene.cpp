@@ -30,401 +30,11 @@ void CScene::BuildObjects()
 	m_pWallsObject->m_pxmf4WallPlanes[4] = XMFLOAT4(0.0f, 0.0f, +1.0f, fHalfDepth);
 	m_pWallsObject->m_pxmf4WallPlanes[5] = XMFLOAT4(0.0f, 0.0f, -1.0f, fHalfDepth);
 	m_pWallsObject->m_xmOOBBPlayerMoveCheck = BoundingOrientedBox(XMFLOAT3(0.0f, 0.0f, 0.0f), XMFLOAT3(fHalfWidth, fHalfHeight, fHalfDepth * 0.05f), XMFLOAT4(0.0f, 0.0f, 0.0f, 1.0f));
-
-	float fRailWidth = 6.0f, fRailHeight = 1.0f, fRailDepth = 6.0f;
-	CRailStraightMesh* pRailStraightMesh = new CRailStraightMesh(fRailWidth, fRailHeight, fRailDepth);
-	CRailCornerMesh* pRailCornerMesh = new CRailCornerMesh(fRailWidth * 2, fRailHeight, fRailDepth * 2);
-	std::random_device rd;
-	std::default_random_engine dre(rd());
-	std::uniform_int_distribution <> uid(0, 3);
-	m_nRails = 10;
-	for (int j = 0; j < 4; ++j) {
-		m_ppRailObject[j] = new CRailObject * [m_nRails];
-		if (m_pPlayer->m_bPlayerStart) {
-			m_pPlayer->m_bPlayerStart = FALSE;
-			m_ppRailObject[j][0] = new CRailObject();
-			m_ppRailObject[j][0]->setRailSize(XMFLOAT3(fRailWidth, fRailHeight, fRailDepth));
-			m_ppRailObject[j][0]->setRailType(0);
-			m_ppRailObject[j][0]->SetRotationAxis(XMFLOAT3(-1, 0, 0));
-			m_ppRailObject[j][0]->setRotationAngle(0);
-			m_ppRailObject[j][0]->SetPosition(0.0f, -1.0f, 0.0f);
-			m_ppRailObject[j][0]->setGoalPosition(0, 0, fRailDepth * 0.5);
-			m_ppRailObject[j][0]->SetMesh(pRailStraightMesh);
-			m_ppRailObject[j][0]->SetColor(RGB(0, 255, 0));
-			m_ppRailObject[j][0]->Rotate();
-		}
-		else {
-			int type = uid(dre);
-			m_ppRailObject[j][0] = new CRailObject();
-			m_ppRailObject[j][0]->setRailSize(XMFLOAT3(fRailWidth, fRailHeight, fRailDepth));
-			m_ppRailObject[j][0]->setRailType(0);
-			m_ppRailObject[j][0]->SetRotationAxis(XMFLOAT3(-1, 0, 0));
-			m_ppRailObject[j][0]->setRotationAngle(0);
-			m_ppRailObject[j][0]->SetPosition(0.0f, -1.0f, 0.0f);
-			m_ppRailObject[j][0]->setGoalPosition(0, 0, fRailDepth * 0.5);
-			m_ppRailObject[j][0]->SetMesh(pRailStraightMesh);
-			m_ppRailObject[j][0]->SetColor(RGB(0, 255, 0));
-			m_ppRailObject[j][0]->Rotate();
-		}
-		for (int i = 1; i < m_nRails; ++i) {
-			int type = uid(dre);
-			m_ppRailObject[j][i] = new CRailObject();
-			m_ppRailObject[j][i]->setRailSize(XMFLOAT3(fRailWidth, fRailHeight, fRailDepth));
-			m_ppRailObject[j][i]->setRailType(type);
-			m_ppRailObject[j][i]->SetRotationAxis(XMFLOAT3(-1, 0, 0));
-			m_ppRailObject[j][i]->MakeRail(pRailStraightMesh,fRailWidth, fRailHeight, fRailDepth,);
-			switch (type) {
-			case 0:					// 평지
-				m_ppRailObject[j][i]->setRotationAngle(0);
-				m_ppRailObject[j][i]->SetMesh(pRailStraightMesh);
-				m_ppRailObject[j][i]->RotateHead(m_pPlayer->m_iRailHead, TRUE);
-				switch (m_ppRailObject[j][i - 1]->m_iRailType) {
-				case 0:				// 평지 - 평지
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth); break;
-					case 3:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z); break;
-					case 6:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth); break;
-					case 9:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z); break;
-					}
-					//m_ppRailObject[j][i]->SetPosition(0, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth);
-					break;
-				case 1:				// 오르막 - 평지
-				case 2:				// 내리막 - 평지
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + 1)); break;
-					case 3:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + 1), m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z); break;
-					case 6:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + 1)); break;
-					case 9:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + 1), m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z); break;
-					}
-					break;
-				case 3:				// 우회전 - 평지
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 1.5); break;
-					case 3:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 1.5, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5); break;
-					case 6:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 1.5); break;
-					case 9:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 1.5, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 0.5); break;
-					}
-					break;
-				case 4:				// 좌회전 - 평지
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 1.5); break;
-					case 3:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 1.5, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 0.5); break;
-					case 6:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 1.5); break;
-					case 9:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 1.5, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5); break;
-					}
-					break;
-				}
-				switch (m_pPlayer->m_iRailHead) {
-				case 12:m_ppRailObject[j][i]->changeGoalPosition(0, 0, fRailDepth * 0.5); break;
-				case 3:m_ppRailObject[j][i]->changeGoalPosition(fRailDepth * 0.5, 0, 0); break;
-				case 6:m_ppRailObject[j][i]->changeGoalPosition(0, 0, -fRailDepth * 0.5); break;
-				case 9:m_ppRailObject[j][i]->changeGoalPosition(-fRailDepth * 0.5, 0, 0); break;
-				}
-				break;
-			case 1:					// 오르막
-				m_ppRailObject[j][i]->setRotationAngle(30);
-				m_ppRailObject[j][i]->SetMesh(pRailStraightMesh);
-				m_ppRailObject[j][i]->RotateHead(m_pPlayer->m_iRailHead, TRUE);
-				switch (m_ppRailObject[j][i - 1]->m_iRailType) {
-				case 0:				// 평지 - 오르막
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)))); break;
-					case 3:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))), m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z); break;
-					case 6:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)))); break;
-					case 9:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))), m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z); break;
-					}
-					break;
-				case 1:				// 오르막 - 오르막
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))), m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)))); break;
-					case 3:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))), m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))), m_ppRailObject[j][i - 1]->GetPosition().z); break;
-					case 6:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))), m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)))); break;
-					case 9:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))), m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))), m_ppRailObject[j][i - 1]->GetPosition().z); break;
-					}
-					break;
-				case 2:				// 내리막 - 오르막
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)))); break;
-					case 3:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))), m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z); break;
-					case 6:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)))); break;
-					case 9:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))), m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z); break;
-					}
-					break;
-				case 3:				// 우회전 - 오르막
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))); break;
-					case 3:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth + fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5); break;
-					case 6:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))); break;
-					case 9:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 0.5); break;
-					}
-					break;
-				case 4:				// 좌회전 - 오르막
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))); break;
-					case 3:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth + fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 0.5); break;
-					case 6:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))); break;
-					case 9:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5); break;
-					}
-					break;
-				}
-				switch (m_pPlayer->m_iRailHead) {
-				case 12:m_ppRailObject[j][i]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))); break;
-				case 3:m_ppRailObject[j][i]->changeGoalPosition(fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), 0); break;
-				case 6:m_ppRailObject[j][i]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), -fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))); break;
-				case 9:m_ppRailObject[j][i]->changeGoalPosition(-fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), 0); break;
-				}
-				break;
-			case 2:					// 내리막
-				m_ppRailObject[j][i]->setRotationAngle(-30);
-				m_ppRailObject[j][i]->SetMesh(pRailStraightMesh);
-				m_ppRailObject[j][i]->RotateHead(m_pPlayer->m_iRailHead, TRUE);
-				switch (m_ppRailObject[j][i - 1]->m_iRailType) {
-				case 0:				// 평지 - 내리막
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)))); break;
-					case 3:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))), m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z); break;
-					case 6:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)))); break;
-					case 9:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))), m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z); break;
-					}
-					///m_ppRailObject[j][i]->SetPosition(0.0f, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))));
-					break;
-				case 1:				// 오르막 - 내리막
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)))); break;
-					case 3:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))), m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z); break;
-					case 6:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)))); break;
-					case 9:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))), m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z); break;
-					}
-					//m_ppRailObject[j][i]->SetPosition(0.0f, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))));
-					break;
-				case 2:				// 내리막 - 내리막
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x, m_ppRailObject[j][i - 1]->GetPosition().y + fRailWidth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))), m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)))); break;
-					case 3:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))), m_ppRailObject[j][i - 1]->GetPosition().y + fRailWidth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))), m_ppRailObject[j][i - 1]->GetPosition().z); break;
-					case 6:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x, m_ppRailObject[j][i - 1]->GetPosition().y + fRailWidth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))), m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)))); break;
-					case 9:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))), m_ppRailObject[j][i - 1]->GetPosition().y + fRailWidth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))), m_ppRailObject[j][i - 1]->GetPosition().z); break;
-					}
-					//m_ppRailObject[j][i]->SetPosition(0.0f, m_ppRailObject[j][i - 1]->GetPosition().y + fRailWidth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))), m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))));
-					break;
-				case 3:				// 우회전 - 내리막
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))); break;
-					case 3:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth + fRailWidth * 0.5 * +cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5); break;
-					case 6:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))); break;
-					case 9:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailDepth - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 0.5); break;
-					}
-					break;
-				case 4:				// 좌회전 - 내리막
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))); break;
-					case 3:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth + fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 0.5); break;
-					case 6:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))); break;
-					case 9:m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5); break;
-					}
-					break;
-				}
-				switch (m_pPlayer->m_iRailHead) {
-				case 12:m_ppRailObject[j][i]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))); break;
-				case 3:m_ppRailObject[j][i]->changeGoalPosition(fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), 0); break;
-				case 6:m_ppRailObject[j][i]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), -fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle))); break;
-				case 9:m_ppRailObject[j][i]->changeGoalPosition(-fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i]->m_dRotationAngle)), 0); break;
-				}
-				break;
-			case 3:					// 우회전
-				m_ppRailObject[j][i]->setRotationAngle(0);
-				m_ppRailObject[j][i]->SetMesh(pRailCornerMesh);
-				m_ppRailObject[j][i]->RotateHead(m_pPlayer->m_iRailHead, TRUE);
-				switch (m_ppRailObject[j][i - 1]->m_iRailType) {
-				case 0:				// 평지 - 우회전
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth + fRailDepth * 0.5);
-						m_pPlayer->m_iRailHead = 3;
-						break;
-					case 3:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 1.5, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 0.5);
-						m_pPlayer->m_iRailHead = 6;
-						break;
-					case 6:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 1.5);
-						m_pPlayer->m_iRailHead = 9;
-						break;
-					case 9:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 1.5, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5);
-						m_pPlayer->m_iRailHead = 12;
-						break;
-					}
-					break;
-				case 1:				// 오르막 - 우회전
-				case 2:				// 내리막 - 우회전
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + 2));
-						m_pPlayer->m_iRailHead = 3;
-						break;
-					case 3:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + fRailWidth, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 0.5);
-						m_pPlayer->m_iRailHead = 6;
-						break;
-					case 6:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) - fRailDepth);
-						m_pPlayer->m_iRailHead = 9;
-						break;
-					case 9:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) - fRailWidth, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5);
-						m_pPlayer->m_iRailHead = 12;
-						break;
-					}
-					//m_ppRailObject[j][i]->SetPosition(0.0f, m_ppRailObject[j][i - 1]->GetPosition().y + fRailWidth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + 1));
-					break;
-				case 3:				// 우회전 - 우회전
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 2);
-						m_pPlayer->m_iRailHead = 3;
-						break;
-					case 3:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 2, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z);
-						m_pPlayer->m_iRailHead = 6;
-						break;
-					case 6:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 2);
-						m_pPlayer->m_iRailHead = 9;
-						break;
-					case 9:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 2, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z);
-						m_pPlayer->m_iRailHead = 12;
-						break;
-					}
-					break;
-				case 4:				// 좌회전 - 우회전
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 2);
-						m_pPlayer->m_iRailHead = 3;
-						break;
-					case 3:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 2, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth);
-						m_pPlayer->m_iRailHead = 6;
-						break;
-					case 6:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 2);
-						m_pPlayer->m_iRailHead = 9;
-						break;
-					case 9:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 2, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth);
-						m_pPlayer->m_iRailHead = 12;
-						break;
-					}
-					break;
-				}
-				switch (m_pPlayer->m_iRailHead) {
-				case 12:m_ppRailObject[j][i]->changeGoalPosition(-fRailDepth * 0.5, 0, fRailDepth); break;
-				case 3:m_ppRailObject[j][i]->changeGoalPosition(fRailDepth, 0, fRailDepth * 0.5); break;
-				case 6:m_ppRailObject[j][i]->changeGoalPosition(fRailDepth * 0.5, 0, -fRailDepth); break;
-				case 9:m_ppRailObject[j][i]->changeGoalPosition(-fRailDepth, 0, -fRailDepth * 0.5); break;
-				}
-				break;
-			case 4:					// 좌회전
-				m_ppRailObject[j][i]->setRotationAngle(0);
-				m_ppRailObject[j][i]->RotateHead(m_pPlayer->m_iRailHead, FALSE);
-				m_ppRailObject[j][i]->SetMesh(pRailCornerMesh);
-				switch (m_ppRailObject[j][i - 1]->m_iRailType) {
-				case 0:				// 평지 - 좌회전
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:// 문제
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 1.5);
-						m_pPlayer->m_iRailHead = 9;
-						break;
-					case 3:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 1.5, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5);
-						m_pPlayer->m_iRailHead = 12;
-						break;
-					case 6: // 문제
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 1.5);
-						m_pPlayer->m_iRailHead = 3;
-						break;
-					case 9:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 1.5, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 0.5);
-						m_pPlayer->m_iRailHead = 6;
-						break;
-					}
-					break;
-				case 1:				// 오르막 - 좌회전
-				case 2:				// 내리막 - 좌회전
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + fRailDepth);
-						m_pPlayer->m_iRailHead = 9;
-						break;
-					case 3:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + fRailWidth, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5);
-						m_pPlayer->m_iRailHead = 12;
-						break;
-					case 6:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) - fRailDepth);
-						m_pPlayer->m_iRailHead = 3;
-						break;
-					case 9:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) - fRailWidth, m_ppRailObject[j][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 0.5);
-						m_pPlayer->m_iRailHead = 6;
-						break;
-					}
-					//m_ppRailObject[j][i]->SetPosition(0.0f, m_ppRailObject[j][i - 1]->GetPosition().y + fRailWidth * 0.5 * sin(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)), m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[j][i - 1]->m_dRotationAngle)) + 1));
-					break;
-				case 3:				// 우회전 - 좌회전
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 2);
-						m_pPlayer->m_iRailHead = 9;
-						break;
-					case 3:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 2, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth);
-						m_pPlayer->m_iRailHead = 12;
-						break;
-					case 6:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 2);
-						m_pPlayer->m_iRailHead = 3;
-						break;
-					case 9:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 2, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth);
-						m_pPlayer->m_iRailHead = 6;
-						break;
-					}
-					break;
-				case 4:				// 좌회전 - 좌회전
-					switch (m_pPlayer->m_iRailHead) {
-					case 12:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z + fRailDepth * 2);
-						m_pPlayer->m_iRailHead = 9;
-						break;
-					case 3:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x + fRailWidth * 2, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z);
-						m_pPlayer->m_iRailHead = 12;
-						break;
-					case 6:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z - fRailDepth * 2);
-						m_pPlayer->m_iRailHead = 3;
-						break;
-					case 9:
-						m_ppRailObject[j][i]->SetPosition(m_ppRailObject[j][i - 1]->GetPosition().x - fRailWidth * 2, m_ppRailObject[j][i - 1]->GetPosition().y, m_ppRailObject[j][i - 1]->GetPosition().z);
-						m_pPlayer->m_iRailHead = 6;
-						break;
-					}
-					break;
-				}
-				switch (m_pPlayer->m_iRailHead) {
-				case 12:m_ppRailObject[j][i]->changeGoalPosition(fRailDepth * 0.5, 0, fRailDepth); break;
-				case 3:m_ppRailObject[j][i]->changeGoalPosition(fRailDepth, 0, -fRailDepth * 0.5); break;
-				case 6:m_ppRailObject[j][i]->changeGoalPosition(-fRailDepth * 0.5, 0, -fRailDepth); break;
-				case 9:m_ppRailObject[j][i]->changeGoalPosition(-fRailDepth, 0, fRailDepth * 0.5); break;
-				}
-				break;
-			}
-			m_ppRailObject[j][i]->SetColor(RGB(0, 255, 0));
-			m_ppRailObject[j][i]->Rotate();
-		}
+	
+	for (int i = 0; i < 4; ++i) {
+		MakeRail(i);
 	}
+
 		//m_ppRailObject[1] = new CRailObject();
 		//m_ppRailObject[1]->setRailType(1);
 		//m_ppRailObject[1]->SetRotationAxis(XMFLOAT3(-1, 0, 0));
@@ -590,6 +200,1078 @@ void CScene::ReleaseObjects()
 #ifdef _WITH_DRAW_AXIS
 	if (m_pWorldAxis) delete m_pWorldAxis;
 #endif
+}
+
+void CScene::MakeRail(const int& railset) {
+	float fRailWidth = 6.0f, fRailHeight = 1.0f, fRailDepth = 6.0f;
+	CRailStraightMesh* pRailStraightMesh = new CRailStraightMesh(fRailWidth, fRailHeight, fRailDepth);
+	CRailCornerMesh* pRailCornerMesh = new CRailCornerMesh(fRailWidth * 2, fRailHeight, fRailDepth * 2);
+	std::random_device rd;
+	std::default_random_engine dre(rd());
+	std::uniform_int_distribution <> uid(0, 3);
+	m_nRails = 10;
+	m_ppRailObject[railset] = new CRailObject * [m_nRails];
+	if (m_pPlayer->m_bPlayerStart) {
+		m_pPlayer->m_bPlayerStart = FALSE;
+		m_ppRailObject[railset][0] = new CRailObject();
+		m_ppRailObject[railset][0]->setRailSize(XMFLOAT3(fRailWidth, fRailHeight, fRailDepth));
+		m_ppRailObject[railset][0]->setRailType(0);
+		m_ppRailObject[railset][0]->SetRotationAxis(XMFLOAT3(-1, 0, 0));
+		m_ppRailObject[railset][0]->setRotationAngle(0);
+		m_ppRailObject[railset][0]->SetPosition(0.0f, -1.0f, 0.0f);
+		m_ppRailObject[railset][0]->setGoalPosition(0, 0, fRailDepth * 0.5);
+		m_ppRailObject[railset][0]->SetMesh(pRailStraightMesh);
+		m_ppRailObject[railset][0]->SetColor(RGB(0, 255, 0));
+		m_ppRailObject[railset][0]->Rotate();
+	}
+	else {
+		int type = uid(dre);
+		m_ppRailObject[railset][0] = new CRailObject();
+		m_ppRailObject[railset][0]->setRailSize(XMFLOAT3(fRailWidth, fRailHeight, fRailDepth));
+		m_ppRailObject[railset][0]->setRailType(type);
+		m_ppRailObject[railset][0]->SetRotationAxis(XMFLOAT3(-1, 0, 0));
+		if (railset == 0) {
+			switch (type) {
+			case 0:					// 평지
+				m_ppRailObject[railset][0]->setRotationAngle(0);
+				m_ppRailObject[railset][0]->SetMesh(pRailStraightMesh);
+				m_ppRailObject[railset][0]->RotateHead(m_pPlayer->m_iRailHead, TRUE);
+				switch (m_ppRailObject[3][m_nRails - 1]->m_iRailType) {
+				case 0:				// 평지 - 평지
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z); break;
+					}
+					break;
+				case 1:				// 오르막 - 평지
+				case 2:				// 내리막 - 평지
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + 1)); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + 1), m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + 1)); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + 1), m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z); break;
+					}
+					break;
+				case 3:				// 우회전 - 평지
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 1.5); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 1.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 1.5); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 1.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5); break;
+					}
+					break;
+				case 4:				// 좌회전 - 평지
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 1.5); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 1.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 1.5); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 1.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5); break;
+					}
+					break;
+				}
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][0]->changeGoalPosition(0, 0, fRailDepth * 0.5); break;
+				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5, 0, 0); break;
+				case 6:m_ppRailObject[railset][0]->changeGoalPosition(0, 0, -fRailDepth * 0.5); break;
+				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5, 0, 0); break;
+				}
+				break;
+			case 1:					// 오르막
+				m_ppRailObject[railset][0]->setRotationAngle(30);
+				m_ppRailObject[railset][0]->SetMesh(pRailStraightMesh);
+				m_ppRailObject[railset][0]->RotateHead(m_pPlayer->m_iRailHead, TRUE);
+				switch (m_ppRailObject[3][m_nRails - 1]->m_iRailType) {
+				case 0:				// 평지 - 오르막
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z); break;
+					}
+					break;
+				case 1:				// 오르막 - 오르막
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[3][m_nRails - 1]->GetPosition().z); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[3][m_nRails - 1]->GetPosition().z); break;
+					}
+					break;
+				case 2:				// 내리막 - 오르막
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z); break;
+					}
+					break;
+				case 3:				// 우회전 - 오르막
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth + fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5); break;
+					}
+					break;
+				case 4:				// 좌회전 - 오르막
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth + fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5); break;
+					}
+					break;
+				}
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), 0); break;
+				case 6:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), -fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), 0); break;
+				}
+				break;
+			case 2:					// 내리막
+				m_ppRailObject[railset][0]->setRotationAngle(-30);
+				m_ppRailObject[railset][0]->SetMesh(pRailStraightMesh);
+				m_ppRailObject[railset][0]->RotateHead(m_pPlayer->m_iRailHead, TRUE);
+				switch (m_ppRailObject[3][m_nRails - 1]->m_iRailType) {
+				case 0:				// 평지 - 내리막
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z); break;
+					}
+					break;
+				case 1:				// 오르막 - 내리막
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z); break;
+					}
+					break;
+				case 2:				// 내리막 - 내리막
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailWidth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailWidth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[3][m_nRails - 1]->GetPosition().z); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailWidth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailWidth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[3][m_nRails - 1]->GetPosition().z); break;
+					}
+					break;
+				case 3:				// 우회전 - 내리막
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth + fRailWidth * 0.5 * +cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailDepth - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5); break;
+					}
+					break;
+				case 4:				// 좌회전 - 내리막
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth + fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5); break;
+					}
+					break;
+				}
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), 0); break;
+				case 6:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), -fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), 0); break;
+				}
+				break;
+			case 3:					// 우회전
+				m_ppRailObject[railset][0]->setRotationAngle(0);
+				m_ppRailObject[railset][0]->SetMesh(pRailCornerMesh);
+				m_ppRailObject[railset][0]->RotateHead(m_pPlayer->m_iRailHead, TRUE);
+				switch (m_ppRailObject[3][m_nRails - 1]->m_iRailType) {
+				case 0:				// 평지 - 우회전
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth + fRailDepth * 0.5);
+						m_pPlayer->m_iRailHead = 3;
+						break;
+					case 3:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 1.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5);
+						m_pPlayer->m_iRailHead = 6;
+						break;
+					case 6:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 1.5);
+						m_pPlayer->m_iRailHead = 9;
+						break;
+					case 9:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 1.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5);
+						m_pPlayer->m_iRailHead = 12;
+						break;
+					}
+					break;
+				case 1:				// 오르막 - 우회전
+				case 2:				// 내리막 - 우회전
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + 2));
+						m_pPlayer->m_iRailHead = 3;
+						break;
+					case 3:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + fRailWidth, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5);
+						m_pPlayer->m_iRailHead = 6;
+						break;
+					case 6:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) - fRailDepth);
+						m_pPlayer->m_iRailHead = 9;
+						break;
+					case 9:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) - fRailWidth, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5);
+						m_pPlayer->m_iRailHead = 12;
+						break;
+					}
+					break;
+				case 3:				// 우회전 - 우회전
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 2);
+						m_pPlayer->m_iRailHead = 3;
+						break;
+					case 3:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 2, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z);
+						m_pPlayer->m_iRailHead = 6;
+						break;
+					case 6:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 2);
+						m_pPlayer->m_iRailHead = 9;
+						break;
+					case 9:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 2, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z);
+						m_pPlayer->m_iRailHead = 12;
+						break;
+					}
+					break;
+				case 4:				// 좌회전 - 우회전
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 2);
+						m_pPlayer->m_iRailHead = 3;
+						break;
+					case 3:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 2, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth);
+						m_pPlayer->m_iRailHead = 6;
+						break;
+					case 6:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 2);
+						m_pPlayer->m_iRailHead = 9;
+						break;
+					case 9:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 2, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth);
+						m_pPlayer->m_iRailHead = 12;
+						break;
+					}
+					break;
+				}
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5, 0, fRailDepth); break;
+				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth, 0, fRailDepth * 0.5); break;
+				case 6:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5, 0, -fRailDepth); break;
+				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth, 0, -fRailDepth * 0.5); break;
+				}
+				break;
+			case 4:					// 좌회전
+				m_ppRailObject[railset][0]->setRotationAngle(0);
+				m_ppRailObject[railset][0]->RotateHead(m_pPlayer->m_iRailHead, FALSE);
+				m_ppRailObject[railset][0]->SetMesh(pRailCornerMesh);
+				switch (m_ppRailObject[3][m_nRails - 1]->m_iRailType) {
+				case 0:				// 평지 - 좌회전
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:// 문제
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 1.5);
+						m_pPlayer->m_iRailHead = 9;
+						break;
+					case 3:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 1.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5);
+						m_pPlayer->m_iRailHead = 12;
+						break;
+					case 6: // 문제
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 1.5);
+						m_pPlayer->m_iRailHead = 3;
+						break;
+					case 9:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 1.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5);
+						m_pPlayer->m_iRailHead = 6;
+						break;
+					}
+					break;
+				case 1:				// 오르막 - 좌회전
+				case 2:				// 내리막 - 좌회전
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + fRailDepth);
+						m_pPlayer->m_iRailHead = 9;
+						break;
+					case 3:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) + fRailWidth, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5);
+						m_pPlayer->m_iRailHead = 12;
+						break;
+					case 6:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) - fRailDepth);
+						m_pPlayer->m_iRailHead = 3;
+						break;
+					case 9:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)) - fRailWidth, m_ppRailObject[3][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[3][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5);
+						m_pPlayer->m_iRailHead = 6;
+						break;
+					}
+					break;
+				case 3:				// 우회전 - 좌회전
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 2);
+						m_pPlayer->m_iRailHead = 9;
+						break;
+					case 3:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 2, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth);
+						m_pPlayer->m_iRailHead = 12;
+						break;
+					case 6:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 2);
+						m_pPlayer->m_iRailHead = 3;
+						break;
+					case 9:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 2, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth);
+						m_pPlayer->m_iRailHead = 6;
+						break;
+					}
+					break;
+				case 4:				// 좌회전 - 좌회전
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z + fRailDepth * 2);
+						m_pPlayer->m_iRailHead = 9;
+						break;
+					case 3:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x + fRailWidth * 2, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z);
+						m_pPlayer->m_iRailHead = 12;
+						break;
+					case 6:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z - fRailDepth * 2);
+						m_pPlayer->m_iRailHead = 3;
+						break;
+					case 9:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[3][m_nRails - 1]->GetPosition().x - fRailWidth * 2, m_ppRailObject[3][m_nRails - 1]->GetPosition().y, m_ppRailObject[3][m_nRails - 1]->GetPosition().z);
+						m_pPlayer->m_iRailHead = 6;
+						break;
+					}
+					break;
+				}
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5, 0, fRailDepth); break;
+				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth, 0, -fRailDepth * 0.5); break;
+				case 6:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5, 0, -fRailDepth); break;
+				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth, 0, fRailDepth * 0.5); break;
+				}
+				break;
+			}
+		}
+		else {
+			switch (type) {
+			case 0:					// 평지
+				m_ppRailObject[railset][0]->setRotationAngle(0);
+				m_ppRailObject[railset][0]->SetMesh(pRailStraightMesh);
+				m_ppRailObject[railset][0]->RotateHead(m_pPlayer->m_iRailHead, TRUE);
+				switch (m_ppRailObject[railset - 1][m_nRails - 1]->m_iRailType) {
+				case 0:				// 평지 - 평지
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z); break;
+					}
+					break;
+				case 1:				// 오르막 - 평지
+				case 2:				// 내리막 - 평지
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + 1)); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + 1), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + 1)); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + 1), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z); break;
+					}
+					break;
+				case 3:				// 우회전 - 평지
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 1.5); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 1.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 1.5); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 1.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5); break;
+					}
+					break;
+				case 4:				// 좌회전 - 평지
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 1.5); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 1.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 1.5); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 1.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5); break;
+					}
+					break;
+				}
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][0]->changeGoalPosition(0, 0, fRailDepth * 0.5); break;
+				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5, 0, 0); break;
+				case 6:m_ppRailObject[railset][0]->changeGoalPosition(0, 0, -fRailDepth * 0.5); break;
+				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5, 0, 0); break;
+				}
+				break;
+			case 1:					// 오르막
+				m_ppRailObject[railset][0]->setRotationAngle(30);
+				m_ppRailObject[railset][0]->SetMesh(pRailStraightMesh);
+				m_ppRailObject[railset][0]->RotateHead(m_pPlayer->m_iRailHead, TRUE);
+				switch (m_ppRailObject[railset - 1][m_nRails - 1]->m_iRailType) {
+				case 0:				// 평지 - 오르막
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z); break;
+					}
+					break;
+				case 1:				// 오르막 - 오르막
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z); break;
+					}
+					break;
+				case 2:				// 내리막 - 오르막
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z); break;
+					}
+					break;
+				case 3:				// 우회전 - 오르막
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth + fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5); break;
+					}
+					break;
+				case 4:				// 좌회전 - 오르막
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth + fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5); break;
+					}
+					break;
+				}
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), 0); break;
+				case 6:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), -fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), 0); break;
+				}
+				break;
+			case 2:					// 내리막
+				m_ppRailObject[railset][0]->setRotationAngle(-30);
+				m_ppRailObject[railset][0]->SetMesh(pRailStraightMesh);
+				m_ppRailObject[railset][0]->RotateHead(m_pPlayer->m_iRailHead, TRUE);
+				switch (m_ppRailObject[railset - 1][m_nRails - 1]->m_iRailType) {
+				case 0:				// 평지 - 내리막
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z); break;
+					}
+					break;
+				case 1:				// 오르막 - 내리막
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z); break;
+					}
+					break;
+				case 2:				// 내리막 - 내리막
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailWidth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailWidth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailWidth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)))); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailWidth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z); break;
+					}
+					break;
+				case 3:				// 우회전 - 내리막
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth + fRailWidth * 0.5 * +cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailDepth - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5); break;
+					}
+					break;
+				case 4:				// 좌회전 - 내리막
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+					case 3:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth + fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5); break;
+					case 6:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+					case 9:m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5); break;
+					}
+					break;
+				}
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), 0); break;
+				case 6:m_ppRailObject[railset][0]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), -fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle))); break;
+				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][0]->m_dRotationAngle)), 0); break;
+				}
+				break;
+			case 3:					// 우회전
+				m_ppRailObject[railset][0]->setRotationAngle(0);
+				m_ppRailObject[railset][0]->SetMesh(pRailCornerMesh);
+				m_ppRailObject[railset][0]->RotateHead(m_pPlayer->m_iRailHead, TRUE);
+				switch (m_ppRailObject[railset - 1][m_nRails - 1]->m_iRailType) {
+				case 0:				// 평지 - 우회전
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth + fRailDepth * 0.5);
+						m_pPlayer->m_iRailHead = 3;
+						break;
+					case 3:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 1.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5);
+						m_pPlayer->m_iRailHead = 6;
+						break;
+					case 6:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 1.5);
+						m_pPlayer->m_iRailHead = 9;
+						break;
+					case 9:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 1.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5);
+						m_pPlayer->m_iRailHead = 12;
+						break;
+					}
+					break;
+				case 1:				// 오르막 - 우회전
+				case 2:				// 내리막 - 우회전
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + 2));
+						m_pPlayer->m_iRailHead = 3;
+						break;
+					case 3:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + fRailWidth, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5);
+						m_pPlayer->m_iRailHead = 6;
+						break;
+					case 6:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) - fRailDepth);
+						m_pPlayer->m_iRailHead = 9;
+						break;
+					case 9:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) - fRailWidth, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5);
+						m_pPlayer->m_iRailHead = 12;
+						break;
+					}
+					break;
+				case 3:				// 우회전 - 우회전
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 2);
+						m_pPlayer->m_iRailHead = 3;
+						break;
+					case 3:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 2, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z);
+						m_pPlayer->m_iRailHead = 6;
+						break;
+					case 6:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 2);
+						m_pPlayer->m_iRailHead = 9;
+						break;
+					case 9:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 2, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z);
+						m_pPlayer->m_iRailHead = 12;
+						break;
+					}
+					break;
+				case 4:				// 좌회전 - 우회전
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 2);
+						m_pPlayer->m_iRailHead = 3;
+						break;
+					case 3:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 2, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth);
+						m_pPlayer->m_iRailHead = 6;
+						break;
+					case 6:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 2);
+						m_pPlayer->m_iRailHead = 9;
+						break;
+					case 9:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 2, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth);
+						m_pPlayer->m_iRailHead = 12;
+						break;
+					}
+					break;
+				}
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5, 0, fRailDepth); break;
+				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth, 0, fRailDepth * 0.5); break;
+				case 6:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5, 0, -fRailDepth); break;
+				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth, 0, -fRailDepth * 0.5); break;
+				}
+				break;
+			case 4:					// 좌회전
+				m_ppRailObject[railset][0]->setRotationAngle(0);
+				m_ppRailObject[railset][0]->RotateHead(m_pPlayer->m_iRailHead, FALSE);
+				m_ppRailObject[railset][0]->SetMesh(pRailCornerMesh);
+				switch (m_ppRailObject[railset - 1][m_nRails - 1]->m_iRailType) {
+				case 0:				// 평지 - 좌회전
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:// 문제
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 1.5);
+						m_pPlayer->m_iRailHead = 9;
+						break;
+					case 3:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 1.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5);
+						m_pPlayer->m_iRailHead = 12;
+						break;
+					case 6: // 문제
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 1.5);
+						m_pPlayer->m_iRailHead = 3;
+						break;
+					case 9:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 1.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5);
+						m_pPlayer->m_iRailHead = 6;
+						break;
+					}
+					break;
+				case 1:				// 오르막 - 좌회전
+				case 2:				// 내리막 - 좌회전
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + fRailDepth);
+						m_pPlayer->m_iRailHead = 9;
+						break;
+					case 3:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) + fRailWidth, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 0.5);
+						m_pPlayer->m_iRailHead = 12;
+						break;
+					case 6:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) - fRailDepth);
+						m_pPlayer->m_iRailHead = 3;
+						break;
+					case 9:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)) - fRailWidth, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset - 1][m_nRails - 1]->m_dRotationAngle)), m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 0.5);
+						m_pPlayer->m_iRailHead = 6;
+						break;
+					}
+					break;
+				case 3:				// 우회전 - 좌회전
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 2);
+						m_pPlayer->m_iRailHead = 9;
+						break;
+					case 3:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 2, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth);
+						m_pPlayer->m_iRailHead = 12;
+						break;
+					case 6:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 2);
+						m_pPlayer->m_iRailHead = 3;
+						break;
+					case 9:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 2, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth);
+						m_pPlayer->m_iRailHead = 6;
+						break;
+					}
+					break;
+				case 4:				// 좌회전 - 좌회전
+					switch (m_pPlayer->m_iRailHead) {
+					case 12:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z + fRailDepth * 2);
+						m_pPlayer->m_iRailHead = 9;
+						break;
+					case 3:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x + fRailWidth * 2, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z);
+						m_pPlayer->m_iRailHead = 12;
+						break;
+					case 6:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z - fRailDepth * 2);
+						m_pPlayer->m_iRailHead = 3;
+						break;
+					case 9:
+						m_ppRailObject[railset][0]->SetPosition(m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().x - fRailWidth * 2, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().y, m_ppRailObject[railset - 1][m_nRails - 1]->GetPosition().z);
+						m_pPlayer->m_iRailHead = 6;
+						break;
+					}
+					break;
+				}
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth * 0.5, 0, fRailDepth); break;
+				case 3:m_ppRailObject[railset][0]->changeGoalPosition(fRailDepth, 0, -fRailDepth * 0.5); break;
+				case 6:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth * 0.5, 0, -fRailDepth); break;
+				case 9:m_ppRailObject[railset][0]->changeGoalPosition(-fRailDepth, 0, fRailDepth * 0.5); break;
+				}
+				break;
+			}
+		}
+		m_ppRailObject[railset][0]->SetColor(RGB(0, 255, 0));
+		m_ppRailObject[railset][0]->Rotate();
+	}
+	for (int i = 1; i < m_nRails; ++i) {
+		int type = uid(dre);
+		m_ppRailObject[railset][i] = new CRailObject();
+		m_ppRailObject[railset][i]->setRailSize(XMFLOAT3(fRailWidth, fRailHeight, fRailDepth));
+		m_ppRailObject[railset][i]->setRailType(type);
+		m_ppRailObject[railset][i]->SetRotationAxis(XMFLOAT3(-1, 0, 0));
+		switch (type) {
+		case 0:					// 평지
+			m_ppRailObject[railset][i]->setRotationAngle(0);
+			m_ppRailObject[railset][i]->SetMesh(pRailStraightMesh);
+			m_ppRailObject[railset][i]->RotateHead(m_pPlayer->m_iRailHead, TRUE);
+			switch (m_ppRailObject[railset][i - 1]->m_iRailType) {
+			case 0:				// 평지 - 평지
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth); break;
+				case 3:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z); break;
+				case 6:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth); break;
+				case 9:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z); break;
+				}
+				break;
+			case 1:				// 오르막 - 평지
+			case 2:				// 내리막 - 평지
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + 1)); break;
+				case 3:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + 1), m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z); break;
+				case 6:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + 1)); break;
+				case 9:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + 1), m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z); break;
+				}
+				break;
+			case 3:				// 우회전 - 평지
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 1.5); break;
+				case 3:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 1.5, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 0.5); break;
+				case 6:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 1.5); break;
+				case 9:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 1.5, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 0.5); break;
+				}
+				break;
+			case 4:				// 좌회전 - 평지
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 1.5); break;
+				case 3:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 1.5, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 0.5); break;
+				case 6:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 1.5); break;
+				case 9:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 1.5, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 0.5); break;
+				}
+				break;
+			}
+			switch (m_pPlayer->m_iRailHead) {
+			case 12:m_ppRailObject[railset][i]->changeGoalPosition(0, 0, fRailDepth * 0.5); break;
+			case 3:m_ppRailObject[railset][i]->changeGoalPosition(fRailDepth * 0.5, 0, 0); break;
+			case 6:m_ppRailObject[railset][i]->changeGoalPosition(0, 0, -fRailDepth * 0.5); break;
+			case 9:m_ppRailObject[railset][i]->changeGoalPosition(-fRailDepth * 0.5, 0, 0); break;
+			}
+			break;
+		case 1:					// 오르막
+			m_ppRailObject[railset][i]->setRotationAngle(30);
+			m_ppRailObject[railset][i]->SetMesh(pRailStraightMesh);
+			m_ppRailObject[railset][i]->RotateHead(m_pPlayer->m_iRailHead, TRUE);
+			switch (m_ppRailObject[railset][i - 1]->m_iRailType) {
+			case 0:				// 평지 - 오르막
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)))); break;
+				case 3:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))), m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z); break;
+				case 6:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)))); break;
+				case 9:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))), m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z); break;
+				}
+				break;
+			case 1:				// 오르막 - 오르막
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))), m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)))); break;
+				case 3:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))), m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))), m_ppRailObject[railset][i - 1]->GetPosition().z); break;
+				case 6:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))), m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)))); break;
+				case 9:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))), m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))), m_ppRailObject[railset][i - 1]->GetPosition().z); break;
+				}
+				break;
+			case 2:				// 내리막 - 오르막
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)))); break;
+				case 3:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))), m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z); break;
+				case 6:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)))); break;
+				case 9:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))), m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z); break;
+				}
+				break;
+			case 3:				// 우회전 - 오르막
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))); break;
+				case 3:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth + fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 0.5); break;
+				case 6:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))); break;
+				case 9:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 0.5); break;
+				}
+				break;
+			case 4:				// 좌회전 - 오르막
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))); break;
+				case 3:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth + fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 0.5); break;
+				case 6:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))); break;
+				case 9:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 0.5); break;
+				}
+				break;
+			}
+			switch (m_pPlayer->m_iRailHead) {
+			case 12:m_ppRailObject[railset][i]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))); break;
+			case 3:m_ppRailObject[railset][i]->changeGoalPosition(fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), 0); break;
+			case 6:m_ppRailObject[railset][i]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), -fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))); break;
+			case 9:m_ppRailObject[railset][i]->changeGoalPosition(-fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), 0); break;
+			}
+			break;
+		case 2:					// 내리막
+			m_ppRailObject[railset][i]->setRotationAngle(-30);
+			m_ppRailObject[railset][i]->SetMesh(pRailStraightMesh);
+			m_ppRailObject[railset][i]->RotateHead(m_pPlayer->m_iRailHead, TRUE);
+			switch (m_ppRailObject[railset][i - 1]->m_iRailType) {
+			case 0:				// 평지 - 내리막
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)))); break;
+				case 3:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))), m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z); break;
+				case 6:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)))); break;
+				case 9:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 0.5 * (1 + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))), m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z); break;
+				}
+				break;
+			case 1:				// 오르막 - 내리막
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)))); break;
+				case 3:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))), m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z); break;
+				case 6:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)))); break;
+				case 9:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))), m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z); break;
+				}
+				break;
+			case 2:				// 내리막 - 내리막
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailWidth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))), m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)))); break;
+				case 3:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))), m_ppRailObject[railset][i - 1]->GetPosition().y + fRailWidth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))), m_ppRailObject[railset][i - 1]->GetPosition().z); break;
+				case 6:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailWidth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))), m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)))); break;
+				case 9:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))), m_ppRailObject[railset][i - 1]->GetPosition().y + fRailWidth * 0.5 * (sin(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))), m_ppRailObject[railset][i - 1]->GetPosition().z); break;
+				}
+				break;
+			case 3:				// 우회전 - 내리막
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))); break;
+				case 3:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth + fRailWidth * 0.5 * +cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 0.5); break;
+				case 6:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))); break;
+				case 9:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailDepth - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 0.5); break;
+				}
+				break;
+			case 4:				// 좌회전 - 내리막
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))); break;
+				case 3:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth + fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 0.5); break;
+				case 6:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))); break;
+				case 9:m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 0.5); break;
+				}
+				break;
+			}
+			switch (m_pPlayer->m_iRailHead) {
+			case 12:m_ppRailObject[railset][i]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))); break;
+			case 3:m_ppRailObject[railset][i]->changeGoalPosition(fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), 0); break;
+			case 6:m_ppRailObject[railset][i]->changeGoalPosition(0, fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), -fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle))); break;
+			case 9:m_ppRailObject[railset][i]->changeGoalPosition(-fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i]->m_dRotationAngle)), 0); break;
+			}
+			break;
+		case 3:					// 우회전
+			m_ppRailObject[railset][i]->setRotationAngle(0);
+			m_ppRailObject[railset][i]->SetMesh(pRailCornerMesh);
+			m_ppRailObject[railset][i]->RotateHead(m_pPlayer->m_iRailHead, TRUE);
+			switch (m_ppRailObject[railset][i - 1]->m_iRailType) {
+			case 0:				// 평지 - 우회전
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth + fRailDepth * 0.5);
+					m_pPlayer->m_iRailHead = 3;
+					break;
+				case 3:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 1.5, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 0.5);
+					m_pPlayer->m_iRailHead = 6;
+					break;
+				case 6:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 1.5);
+					m_pPlayer->m_iRailHead = 9;
+					break;
+				case 9:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 1.5, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 0.5);
+					m_pPlayer->m_iRailHead = 12;
+					break;
+				}
+				break;
+			case 1:				// 오르막 - 우회전
+			case 2:				// 내리막 - 우회전
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 0.5 * (cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + 2));
+					m_pPlayer->m_iRailHead = 3;
+					break;
+				case 3:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + fRailWidth, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 0.5);
+					m_pPlayer->m_iRailHead = 6;
+					break;
+				case 6:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) - fRailDepth);
+					m_pPlayer->m_iRailHead = 9;
+					break;
+				case 9:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) - fRailWidth, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 0.5);
+					m_pPlayer->m_iRailHead = 12;
+					break;
+				}
+				break;
+			case 3:				// 우회전 - 우회전
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 2);
+					m_pPlayer->m_iRailHead = 3;
+					break;
+				case 3:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 2, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z);
+					m_pPlayer->m_iRailHead = 6;
+					break;
+				case 6:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 2);
+					m_pPlayer->m_iRailHead = 9;
+					break;
+				case 9:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 2, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z);
+					m_pPlayer->m_iRailHead = 12;
+					break;
+				}
+				break;
+			case 4:				// 좌회전 - 우회전
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 2);
+					m_pPlayer->m_iRailHead = 3;
+					break;
+				case 3:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 2, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth);
+					m_pPlayer->m_iRailHead = 6;
+					break;
+				case 6:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 2);
+					m_pPlayer->m_iRailHead = 9;
+					break;
+				case 9:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 2, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth);
+					m_pPlayer->m_iRailHead = 12;
+					break;
+				}
+				break;
+			}
+			switch (m_pPlayer->m_iRailHead) {
+			case 12:m_ppRailObject[railset][i]->changeGoalPosition(-fRailDepth * 0.5, 0, fRailDepth); break;
+			case 3:m_ppRailObject[railset][i]->changeGoalPosition(fRailDepth, 0, fRailDepth * 0.5); break;
+			case 6:m_ppRailObject[railset][i]->changeGoalPosition(fRailDepth * 0.5, 0, -fRailDepth); break;
+			case 9:m_ppRailObject[railset][i]->changeGoalPosition(-fRailDepth, 0, -fRailDepth * 0.5); break;
+			}
+			break;
+		case 4:					// 좌회전
+			m_ppRailObject[railset][i]->setRotationAngle(0);
+			m_ppRailObject[railset][i]->RotateHead(m_pPlayer->m_iRailHead, FALSE);
+			m_ppRailObject[railset][i]->SetMesh(pRailCornerMesh);
+			switch (m_ppRailObject[railset][i - 1]->m_iRailType) {
+			case 0:				// 평지 - 좌회전
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:// 문제
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 1.5);
+					m_pPlayer->m_iRailHead = 9;
+					break;
+				case 3:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 1.5, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 0.5);
+					m_pPlayer->m_iRailHead = 12;
+					break;
+				case 6: // 문제
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 1.5);
+					m_pPlayer->m_iRailHead = 3;
+					break;
+				case 9:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 1.5, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 0.5);
+					m_pPlayer->m_iRailHead = 6;
+					break;
+				}
+				break;
+			case 1:				// 오르막 - 좌회전
+			case 2:				// 내리막 - 좌회전
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 0.5, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + fRailDepth);
+					m_pPlayer->m_iRailHead = 9;
+					break;
+				case 3:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) + fRailWidth, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 0.5);
+					m_pPlayer->m_iRailHead = 12;
+					break;
+				case 6:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 0.5, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) - fRailDepth);
+					m_pPlayer->m_iRailHead = 3;
+					break;
+				case 9:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 0.5 * cos(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)) - fRailWidth, m_ppRailObject[railset][i - 1]->GetPosition().y + fRailDepth * 0.5 * sin(DegreeToRadian(m_ppRailObject[railset][i - 1]->m_dRotationAngle)), m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 0.5);
+					m_pPlayer->m_iRailHead = 6;
+					break;
+				}
+				break;
+			case 3:				// 우회전 - 좌회전
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 2);
+					m_pPlayer->m_iRailHead = 9;
+					break;
+				case 3:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 2, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth);
+					m_pPlayer->m_iRailHead = 12;
+					break;
+				case 6:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 2);
+					m_pPlayer->m_iRailHead = 3;
+					break;
+				case 9:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 2, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth);
+					m_pPlayer->m_iRailHead = 6;
+					break;
+				}
+				break;
+			case 4:				// 좌회전 - 좌회전
+				switch (m_pPlayer->m_iRailHead) {
+				case 12:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z + fRailDepth * 2);
+					m_pPlayer->m_iRailHead = 9;
+					break;
+				case 3:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x + fRailWidth * 2, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z);
+					m_pPlayer->m_iRailHead = 12;
+					break;
+				case 6:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z - fRailDepth * 2);
+					m_pPlayer->m_iRailHead = 3;
+					break;
+				case 9:
+					m_ppRailObject[railset][i]->SetPosition(m_ppRailObject[railset][i - 1]->GetPosition().x - fRailWidth * 2, m_ppRailObject[railset][i - 1]->GetPosition().y, m_ppRailObject[railset][i - 1]->GetPosition().z);
+					m_pPlayer->m_iRailHead = 6;
+					break;
+				}
+				break;
+			}
+			switch (m_pPlayer->m_iRailHead) {
+			case 12:m_ppRailObject[railset][i]->changeGoalPosition(fRailDepth * 0.5, 0, fRailDepth); break;
+			case 3:m_ppRailObject[railset][i]->changeGoalPosition(fRailDepth, 0, -fRailDepth * 0.5); break;
+			case 6:m_ppRailObject[railset][i]->changeGoalPosition(-fRailDepth * 0.5, 0, -fRailDepth); break;
+			case 9:m_ppRailObject[railset][i]->changeGoalPosition(-fRailDepth, 0, fRailDepth * 0.5); break;
+			}
+			break;
+		}
+		m_ppRailObject[railset][i]->SetColor(RGB(0, 255, 0));
+		m_ppRailObject[railset][i]->Rotate();
+	}
 }
 
 void CScene::OnProcessingMouseMessage(HWND hWnd, UINT nMessageID, WPARAM wParam, LPARAM lParam)
@@ -818,16 +1500,22 @@ void CScene::Gravity() {
 }
 
 void CScene::FollowRail() {
-	m_pPlayer->MoveTo(m_ppRailObject[m_pPlayer->m_iPlayerRailNum]->getGoalPosition(), 0.15f * tan(DegreeToRadian(m_ppRailObject[m_pPlayer->m_iPlayerRailNum]->m_dRotationAngle)));
-	if (m_pPlayer->GetPosition().x >= m_ppRailObject[m_pPlayer->m_iPlayerRailNum]->getGoalPosition().x - 1.5 &&
-		m_pPlayer->GetPosition().x <= m_ppRailObject[m_pPlayer->m_iPlayerRailNum]->getGoalPosition().x + 1.5 &&
-		m_pPlayer->GetPosition().y >= m_ppRailObject[m_pPlayer->m_iPlayerRailNum]->getGoalPosition().y - 1.5 &&
-		m_pPlayer->GetPosition().y <= m_ppRailObject[m_pPlayer->m_iPlayerRailNum]->getGoalPosition().y + 1.5 &&
-		m_pPlayer->GetPosition().z >= m_ppRailObject[m_pPlayer->m_iPlayerRailNum]->getGoalPosition().z - 1.5 &&
-		m_pPlayer->GetPosition().z <= m_ppRailObject[m_pPlayer->m_iPlayerRailNum]->getGoalPosition().z + 1.5) {
+	m_pPlayer->MoveTo(m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->getGoalPosition(), 0.15f * tan(DegreeToRadian(m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->m_dRotationAngle)));
+	if (m_pPlayer->GetPosition().x >= m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->getGoalPosition().x - 1.5 &&
+		m_pPlayer->GetPosition().x <= m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->getGoalPosition().x + 1.5 &&
+		m_pPlayer->GetPosition().y >= m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->getGoalPosition().y - 1.5 &&
+		m_pPlayer->GetPosition().y <= m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->getGoalPosition().y + 1.5 &&
+		m_pPlayer->GetPosition().z >= m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->getGoalPosition().z - 1.5 &&
+		m_pPlayer->GetPosition().z <= m_ppRailObject[m_pPlayer->m_iPlayerRailSet][m_pPlayer->m_iPlayerRailNum]->getGoalPosition().z + 1.5) {
 		m_pPlayer->m_iPlayerRailNum++;
-		if (m_pPlayer->m_iPlayerRailNum >= 20) {
+		if (m_pPlayer->m_iPlayerRailNum > 9) {
+			delete[] m_ppRailObject[m_pPlayer->m_iPlayerRailSet];
+			MakeRail(m_pPlayer->m_iPlayerRailSet);
 			m_pPlayer->m_iPlayerRailNum = 0;
+			m_pPlayer->m_iPlayerRailSet++;
+			if (m_pPlayer->m_iPlayerRailSet > 3) {
+				m_pPlayer->m_iPlayerRailSet = 0;
+			}
 		}
 	}
 }
