@@ -21,9 +21,6 @@ private:
 	CPlayer*					m_pPlayer = NULL;
 
 	CRailObject**				m_ppRailObject[4] = { NULL };
-
-	CRailStraightMesh*			pRailStraightMesh = NULL;
-	CRailCornerMesh*			pRailCornerMesh = NULL;
 #ifdef _WITH_DRAW_AXIS
 	CGameObject*				m_pWorldAxis = NULL;
 #endif
@@ -32,6 +29,7 @@ public:
 	virtual void BuildObjects();
 	virtual void ReleaseObjects();
 
+	void CheckObjectByCamCollisions();
 	void CheckObjectByObjectCollisions();
 	void CheckObjectByWallCollisions();
 	void CheckPlayerByWallCollision();

@@ -65,7 +65,7 @@ void CGameFramework::BuildObjects()
 {
 	CCamera* pCamera = new CCamera();
 	pCamera->SetViewport(0, 0, FRAMEBUFFER_WIDTH, FRAMEBUFFER_HEIGHT);
-	pCamera->GeneratePerspectiveProjectionMatrix(1.01f, 200.0f, 60.0f);
+	pCamera->GeneratePerspectiveProjectionMatrix(1.01f, 200.0f, 60.0f);					// ºä ÇÁ·¯½ºÅÒ Á¶Àý
 	pCamera->SetFOVAngle(60.0f);
 
 	//pCamera->GenerateOrthographicProjectionMatrix(1.01f, 10.0f, FRAMEBUFFER_WIDTH, FRAMEBUFFER_HEIGHT);

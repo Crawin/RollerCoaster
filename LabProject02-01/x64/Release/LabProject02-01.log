@@ -1,42 +1,6 @@
 ﻿  Camera.cpp
   GameFramework.cpp
-  GameObject.cpp
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\GameObject.cpp(412,42): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  GraphicsPipeline.cpp
   LabProject02-01.cpp
-  Mesh.cpp
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(272,23): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(273,23): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(276,23): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(277,23): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(280,22): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(283,22): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(284,22): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(287,22): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(289,23): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(290,22): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(291,22): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(292,23): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(293,23): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(294,22): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(295,22): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(296,23): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(298,23): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(299,22): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(300,22): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(301,23): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(302,23): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(303,22): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(304,22): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(305,23): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(307,23): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(308,22): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(309,22): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(310,23): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(311,23): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(312,22): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(313,22): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Mesh.cpp(314,23): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Player.cpp
 C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Player.cpp(65,131): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
   Scene.cpp
@@ -581,10 +545,13 @@ C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene
 C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1215,88): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1216,70): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1217,88): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  stdafx.cpp
-  Timer.cpp
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1301,137): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1301,98): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1301,59): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Crawin\source\repos\LabProject(Software Renderer)\LabProject02-01\Scene.cpp(1303,41): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   코드를 생성하고 있습니다.
-  Previous IPDB not found, fall back to full compilation.
-  All 368 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  30 of 365 functions ( 8.2%) were compiled, the rest were copied from previous compilation.
+    8 functions were new in current compilation
+    51 functions had inline decision re-evaluated but remain unchanged
   코드를 생성했습니다.
   LabProject02-01.vcxproj -> C:\Users\Crawin\source\repos\LabProject(Software Renderer)\x64\Release\LabProject02-01.exe

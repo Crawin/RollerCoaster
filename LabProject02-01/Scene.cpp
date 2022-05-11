@@ -153,8 +153,8 @@ void CScene::ReleaseObjects()
 
 void CScene::MakeRail(const int& railset) {
 	float fRailWidth = 6.0f, fRailHeight = 1.0f, fRailDepth = 6.0f;
-	pRailStraightMesh = new CRailStraightMesh(fRailWidth, fRailHeight, fRailDepth);
-	pRailCornerMesh = new CRailCornerMesh(fRailWidth * 2, fRailHeight, fRailDepth * 2);
+	CRailStraightMesh* pRailStraightMesh = new CRailStraightMesh(fRailWidth, fRailHeight, fRailDepth);
+	CRailCornerMesh* pRailCornerMesh = new CRailCornerMesh(fRailWidth * 2, fRailHeight, fRailDepth * 2);
 	std::random_device rd;
 	std::default_random_engine dre(rd());
 	std::uniform_int_distribution <> uid(0, 3);
@@ -1290,6 +1290,21 @@ CGameObject* CScene::PickObjectPointedByCursor(int xClient, int yClient, CCamera
 	return(pNearestObject);
 }
 
+void CScene::CheckObjectByCamCollisions() {
+	CCamera* pCamera = m_pPlayer->GetCamera();
+	std::random_device rd;
+	std::default_random_engine dre(rd());
+	std::uniform_real_distribution <> urd(-100, 100);
+	std::uniform_real_distribution <> rspeed(0, 30);
+	for (int i = 0; i < m_nObjects; ++i) {
+		if (!pCamera->IsInFrustum(m_ppObjects[i]->m_xmOOBB)) {
+			m_ppObjects[i]->SetPosition(m_pPlayer->GetPosition().x + urd(dre), m_pPlayer->GetPosition().y + urd(dre), m_pPlayer->GetPosition().z + urd(dre));
+			m_ppObjects[i]->SetMovingDirection(XMFLOAT3(m_pPlayer->GetPosition().x - m_ppObjects[i]->GetPosition().x, m_pPlayer->GetPosition().y - m_ppObjects[i]->GetPosition().y, m_pPlayer->GetPosition().z - m_ppObjects[i]->GetPosition().z));				// 플레이어 방향으로 날아오게
+			m_ppObjects[i]->SetMovingSpeed(rspeed(dre));
+		}
+	}
+}
+
 void CScene::CheckObjectByObjectCollisions()
 {
 	for (int i = 0; i < m_nObjects; i++) m_ppObjects[i]->m_pObjectCollided = NULL;
@@ -1413,6 +1428,7 @@ void CScene::Animate(float fElapsedTime)
 	//CheckPlayerByWallCollision();
 
 	//CheckObjectByWallCollisions();
+	CheckObjectByCamCollisions();
 
 	CheckObjectByObjectCollisions();
 
@@ -1455,8 +1471,6 @@ void CScene::FollowRail() {
 			if (m_pPlayer->m_bDeleteStart) {
 				delete[] m_ppRailObject[(m_pPlayer->m_iPlayerRailSet + 2) % 4];
 				MakeRail((m_pPlayer->m_iPlayerRailSet + 2) % 4);
-				delete pRailStraightMesh;
-				delete pRailCornerMesh;
 			}
 			m_pPlayer->m_iPlayerRailNum = 0;
 			m_pPlayer->m_iPlayerRailSet++;
